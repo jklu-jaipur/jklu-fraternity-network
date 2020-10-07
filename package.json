@@ -2,6 +2,7 @@
   "name": "network-jklu",
   "version": "0.1.0",
   "private": true,
+  "license": "Mozilla Public License Version 2.0",
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
