@@ -1,0 +1,9 @@
+.setter{
+    display: flex;
+    flex-direction: row-reverse;
+    
+}
+.texter{
+    color: white;
+    text-align: center;
+}
