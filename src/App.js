@@ -1,20 +1,20 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {Component} from 'react';
 import './App.css';
-import Form from "./BaseComponents/Form";
-import Navigation from "./BaseComponents/Navigation";
-import Viz from "./BaseComponents/Viz"
-import Contributors from "./BaseComponents/Contributors";
+import Navbar from './navbar.js';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Content from './Content.js';
+import Viz from './viz.js';
+import Form from './form.js'
 
-function App() {
-    return (
-        <div className="App">
-            <Form/>
-            <Viz/>
-            <Navigation/>
-            <Contributors/>
-        </div>
-    );
+function App(){
+  return(
+    <div>
+      <Navbar />
+      <Content />
+      <Viz />
+      <Form />
+    </div>
+  );
 }
 
 export default App;
