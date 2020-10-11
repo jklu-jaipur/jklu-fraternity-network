@@ -62,7 +62,7 @@ class viz extends Component {
     }
     render() {
         return (
-          <div id="chartdiv" style={{width: "100%", height: "500px"}}/>
+          <div id="chartdiv" style={{width: "100%", height: "650px"}}/>
         );
       }
 }

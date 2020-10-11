@@ -7,3 +7,24 @@
     color: white;
     text-align: center;
 }
+.but-1{
+    margin-right: 20px;
+}
+.nav-open{
+    display: none;
+}
+.nav-open-1{
+    display: block;
+}
+.cont-open{
+    display: none;
+}
+.cont-open-1{
+    display: block;
+}
+.graph-1{
+    display: block;
+}
+.graph-2{
+    display: none;
+}
