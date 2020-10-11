@@ -1,23 +1,18 @@
-import React, {Component} from 'react';
+import React from 'react';
 import './App.css';
-import Navbar from './BaseComponents/Navbar.js';
 import 'bootstrap/dist/css/bootstrap.min.css';
-
+import Viz from './Components/Viz.js';
+import Navigation from "./Components/Navigation";
+import NewUserForm from './Components/NewUserForm.js'
+import Contributors from "./Components/Contributors";
+import ContributorCard from "./BaseComponents/ContributorCard";
 
 function App() {
     return (
-        /*
         <div>
-            
-            <Navbar/>
-            <Content/>
+            <Navigation/>
             <Viz/>
-            <Form/>
         </div>
-        */
-       <div>
-           <Navbar />
-       </div>
     );
 }
 
