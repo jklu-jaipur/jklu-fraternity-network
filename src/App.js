@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
 import './App.css';
-import Navbar from './navbar.js';
+import Navbar from './BaseComponents/Navbar.js';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Content from './Content.js';
-import Viz from './viz.js';
-import Form from './form.js'
+import Content from './BaseComponents/Content.js';
+import Viz from './BaseComponents/Viz.js';
+import Form from './BaseComponents/Form.js'
 
 function App(){
   return(
