@@ -4,79 +4,63 @@ import "regenerator-runtime/runtime";
 import * as am4core from "@amcharts/amcharts4/core";
 import am4themes_animated from "@amcharts/amcharts4/themes/animated";
 import * as am4plugins_forceDirected from "@amcharts/amcharts4/plugins/forceDirected";
+import {ReadUsers} from "../util/FormDb";
+import ProcessGraph from "../util/ProcessGraph";
+import GraphProgress from "../BaseComponents/GraphProgress";
 
 am4core.useTheme(am4themes_animated);
 
 
 class viz extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {isReady: false};
+
+    }
+
     componentDidMount() {
+        ReadUsers()
+            .then(data => ProcessGraph(data))
+            .then(displayData => {
+                this.setState({isReady: true});
+                let friendNetwork = am4core.create("chartDiv", am4plugins_forceDirected.ForceDirectedTree);
 
-        let chart = am4core.create("chartDiv", am4plugins_forceDirected.ForceDirectedTree);
+                // Create series
+                let friendNetworkSeries = friendNetwork.series.push(new am4plugins_forceDirected.ForceDirectedSeries());
 
-        // Create series
-        let series = chart.series.push(new am4plugins_forceDirected.ForceDirectedSeries());
+                // Set data
+                friendNetworkSeries.data = displayData;
 
-        // Set data
-        series.data = [{
-            "name": "First",
-            "children": [{"name": "A1", "value": 100}, {"name": "A2", "value": 60}, {"name": "A3", "value": 30}]
-        },
-            {
-                "name": "Second",
-                "children": [{"name": "B1", "value": 135}, {"name": "B2", "value": 98}, {"name": "B3", "value": 56}]
-            },
-            {
-                "name": "Third",
-                "children": [{"name": "C1", "value": 335}, {"name": "C2", "value": 148}, {
-                    "name": "C3",
-                    "value": 126
-                }, {"name": "C4", "value": 26}]
-            },
-            {
-                "name": "Fourth",
-                "children": [{"name": "D1", "value": 415}, {"name": "D2", "value": 148}, {
-                    "name": "D3",
-                    "value": 89
-                }, {"name": "D4", "value": 64}, {"name": "D5", "value": 16}]
-            },
-            {
-                "name": "Fifth",
-                "children": [{"name": "E1", "value": 687}, {"name": "E2", "value": 148}]
-            },
-            {
-                "name": "Sixth",
-                "children": [{"name": "E1", "value": 687}, {"name": "E2", "value": 148}]
-            },
-            {
-                "name": "Seven",
-                "children": [{"name": "D1", "value": 415}, {"name": "D2", "value": 148}, {
-                    "name": "D3",
-                    "value": 89
-                }, {"name": "D4", "value": 64}, {"name": "D5", "value": 16}]
-            },
-        ];
+                // Set up data fields
+                friendNetworkSeries.dataFields.value = "value";
+                friendNetworkSeries.dataFields.name = "name";
+                friendNetworkSeries.dataFields.id = "githubId";
+                friendNetworkSeries.dataFields.linkWith = "friends";
 
-        // Set up data fields
-        series.dataFields.value = "value";
-        series.dataFields.name = "name";
-        series.dataFields.children = "children";
+                // Add labels
+                friendNetworkSeries.nodes.template.label.text = "{name}";
+                friendNetworkSeries.fontSize = 10;
+                friendNetworkSeries.minRadius = 15;
+                friendNetworkSeries.maxRadius = 40;
+                friendNetwork.zoomable = true;
+                this.chart = friendNetwork;
+            });
 
-        // Add labels
-        series.nodes.template.label.text = "{name}";
-        series.fontSize = 10;
-        series.minRadius = 15;
-        series.maxRadius = 40;
 
-        this.chart = chart;
     }
 
     componentWillUnmount() {
+        console.log('unmount');
         if (this.chart) {
             this.chart.dispose();
         }
     }
 
     render() {
+        const ready = this.state.isReady;
+        if (!ready) {
+            return <GraphProgress/>
+        }
         return (
             <div id="chartDiv" style={{width: "100vw", height: "100vh"}}/>
         );
