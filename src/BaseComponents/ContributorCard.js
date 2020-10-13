@@ -52,7 +52,13 @@ function ContributorCard(props) {
                 </Typography>
             </CardContent>
             <CardActions>
-                <Button size="small">LinkedIn</Button>
+            <Button variant="contained" color="primary">
+              LINKEDIN
+            </Button>
+            <Button variant="contained">GITHUB</Button>
+            
+            {/* <Button color="primary">LINKEDIN</Button>
+            <Button>GITHUB</Button> */}
             </CardActions>
             </Card>
         </div>

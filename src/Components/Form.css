@@ -46,3 +46,19 @@
 .text-design{
     font-size: 140%;
 }
+.text{
+    
+    margin-bottom: -40px;
+}
+@media only screen and (max-width: 600px) {
+    body {
+      margin: 0px;
+      padding: 0px;
+      display: flex;
+        flex-direction: row;
+        justify-content: center;
+    }
+    .starter{
+        padding-top: 30px;
+    }
+  }

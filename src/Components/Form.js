@@ -3,6 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import { FormControl,Button } from '@material-ui/core';
 import MenuItem from '@material-ui/core/MenuItem';
+import ButtonGroup from '@material-ui/core/ButtonGroup';
 import './Form.css';
 
 
@@ -71,16 +72,18 @@ export default function BasicTextFields() {
 
   return (
     <div>
-        <div className="alignment">
-            <div className="transparent-body">
+        <div className="starter">
+            <div>
                 <form className="text"  >
                     <p>Registration</p>
-                </form>
+            </form>
+            </div>
+            <div className="">
+
+                
                 <div className="form-style">
                     <div className="designform">
-                        <form className="subtext" >
-                            <p>Details</p>
-                        </form>
+                        
                         <form className={classes.root}  >
                             <TextField   id="outlined-basic" label="GitHub Username" value={git} onChange={getGit} name="git" type="text" variant="outlined" />
                         </form>
@@ -120,13 +123,17 @@ export default function BasicTextFields() {
                         <form className={classes.root}  >
                             <TextField  id="outlined-basic" label="GitHub Username" value={git4} onChange={getGit4} name="city" type="text" variant="outlined" />
                         </form>
-                        <form>
-                            <div className="designform1">
-                                <Button variant="contained" onClick={allValues} color="primary" >
-                                    Submit
-                                </Button>
+                       
+                            <div className="">
+                                
+                                <ButtonGroup disableElevation variant="contained" color="primary">
+                                    <Button onClick={allValues}>SUBMIT</Button>
+                                    <Button>CLEAR</Button>
+                                </ButtonGroup>
+                                
                             </div>
-                        </form>
+                           
+                        
                     </div>  
                 </div>
             </div>
