@@ -6,8 +6,6 @@ import MenuItem from '@material-ui/core/MenuItem';
 import ButtonGroup from '@material-ui/core/ButtonGroup';
 import './Form.css';
 
-
-
 const useStyles = makeStyles((theme) => ({
   root: {
     '& > *': {
@@ -79,8 +77,6 @@ export default function BasicTextFields() {
             </form>
             </div>
             <div className="">
-
-                
                 <div className="form-style">
                     <div className="designform">
                         
@@ -123,17 +119,11 @@ export default function BasicTextFields() {
                         <form className={classes.root}  >
                             <TextField  id="outlined-basic" label="GitHub Username" value={git4} onChange={getGit4} name="city" type="text" variant="outlined" />
                         </form>
-                       
                             <div className="">
-                                
-                                <ButtonGroup disableElevation variant="contained" color="primary">
-                                    <Button onClick={allValues}>SUBMIT</Button>
-                                    <Button>CLEAR</Button>
-                                </ButtonGroup>
-                                
-                            </div>
-                           
-                        
+                                <Button variant="contained" color="primary" onClick={allValues}>SUBMIT</Button>
+                                <Button ></Button>
+                                <Button variant="contained" color="primary" >CLEAR</Button>                                
+                            </div>                        
                     </div>  
                 </div>
             </div>

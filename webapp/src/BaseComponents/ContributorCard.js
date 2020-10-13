@@ -51,14 +51,11 @@ function ContributorCard(props) {
                 JKLU
                 </Typography>
             </CardContent>
-            <CardActions>
-            <Button variant="contained" color="primary">
-              LINKEDIN
-            </Button>
-            <Button variant="contained">GITHUB</Button>
-            
-            {/* <Button color="primary">LINKEDIN</Button>
-            <Button>GITHUB</Button> */}
+            <CardActions>           
+            <div className="main">
+              <Button color="primary">LINKEDIN</Button>
+              <Button className="button-set">GITHUB</Button>
+            </div>
             </CardActions>
             </Card>
         </div>

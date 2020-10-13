@@ -60,5 +60,10 @@
     }
     .starter{
         padding-top: 30px;
+        margin-left: 7px;
     }
   }
+
+.button-close{
+    padding-left: 20px;
+}
