@@ -16,7 +16,7 @@ function AddUser(githubId, college, friends, location, name) {
     friends.forEach((d) => {
         batch.set(db.collection('users').doc(d.toLowerCase()), {
             clg: '',
-            friends: '',
+            friends: [],
             loc: '',
             name: '',
             githubId: d,

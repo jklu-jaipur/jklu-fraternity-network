@@ -22,6 +22,7 @@ class viz extends Component {
         ReadUsers()
             .then(data => ProcessGraph(data))
             .then(displayData => {
+                console.log(displayData);
                 this.setState({isReady: true});
                 let friendNetwork = am4core.create("chartDiv", am4plugins_forceDirected.ForceDirectedTree);
 
@@ -44,6 +45,7 @@ class viz extends Component {
                 friendNetworkSeries.maxRadius = 40;
                 friendNetwork.zoomable = true;
                 this.chart = friendNetwork;
+
             });
 
 
