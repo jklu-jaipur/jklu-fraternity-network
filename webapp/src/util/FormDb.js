@@ -1,12 +1,13 @@
 import {db} from '../firebase'
 
-function getFriends(friends){
-    let final=[];
-    friends.forEach((f)=>{
+function getFriends(friends) {
+    let final = [];
+    friends.forEach((f) => {
         final.push(f.gitId);
     })
     return final;
 }
+
 //github id: string, college: string, friends: array of github ids, loc=string, name=string,verified=boolean,uid to be generated
 function AddUser(githubId, college, friends, location, name) {
     let batch = db.batch();
@@ -26,7 +27,7 @@ function AddUser(githubId, college, friends, location, name) {
             clg: '',
             friends: [],
             loc: '',
-            name: '',
+            name: d.gitId,
             githubId: d.gitId,
             verified: false,
             img: d.avatar,
