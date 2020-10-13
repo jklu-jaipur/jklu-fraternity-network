@@ -45,8 +45,6 @@ class viz extends Component {
                 friendNetwork.zoomable = true;
                 this.chart = friendNetwork;
             });
-
-
     }
 
     componentWillUnmount() {
