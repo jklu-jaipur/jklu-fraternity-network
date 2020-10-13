@@ -2,73 +2,72 @@ import {AddUser} from './FormDb';
 import {Octokit} from '@octokit/core'
 
 async function validateGithubId(id) {
-    const kit = new Octokit();
+    const kit = new Octokit({auth: 'f214c2eaf1720870a311445766058193734e4150', userAgent: 'network-jklu-webapp'});
     return await kit.request('GET /users/' + id, {});
 }
 
+function getRequiredFields(result) {
+
+    return {
+        'gitId': result.data.login,
+        'avatar': result.data.avatar_url,
+        'pubRepo': result.data.public_repos
+    }
+}
 
 export default function FormValidation(gitId, clg, frndOne, frndTwo, frndThree, frndFour, loc, name) {
     let friends = [];
     let unqFriends = new Set();
-    unqFriends.add(frndOne.toLowerCase());
-    unqFriends.add(frndTwo.toLowerCase());
-    unqFriends.add(frndThree.toLowerCase());
-    unqFriends.add(frndFour.toLowerCase());
-    let dp = [];
+    unqFriends.add(frndOne);
+    unqFriends.add(frndTwo);
+    unqFriends.add(frndThree);
+    unqFriends.add(frndFour);
+    unqFriends.delete('');
+    unqFriends = Array.from(unqFriends);
+    let mainUser={};
     validateGithubId(gitId).then(res => {
-        console.log(res);
-        console.log(unqFriends);
-        if (unqFriends.has(gitId.toLowerCase())) {
-            console.log(unqFriends);
+        mainUser=getRequiredFields(res);
+        if (unqFriends.includes(gitId) || unqFriends.length < 2) {
             return false
         }
-        return validateGithubId(frndOne);
+        return validateGithubId(unqFriends[0]);
     }).then(res => {
-        console.log(res);
         if (res) {
-            friends.push(frndOne);
-            return validateGithubId(frndTwo);
+            friends.push(getRequiredFields(res));
+            return validateGithubId(unqFriends[1]);
         }
         return false
     }).then(res => {
-        console.log(res);
         if (res) {
-            friends.push(frndTwo);
-            if (unqFriends.size >= 4) {
-                return validateGithubId(frndThree);
+            friends.push(getRequiredFields(res));
+            if (unqFriends.length >= 3) {
+                return validateGithubId(unqFriends[2]);
             } else {
                 return true
             }
         }
         return false
     }).then(res => {
-        console.log(res);
         if (res === false) {
             return false
         }
         if (res !== true) {
-            friends.push(frndThree);
-            console.log(unqFriends);
-            console.log(unqFriends[3]);
-            if (unqFriends[3]!=="") {
-                console.log('down');
-                return validateGithubId(frndFour)
+            friends.push(getRequiredFields(res));
+            if (unqFriends.length === 4) {
+                return validateGithubId(unqFriends[3])
             }
         }
         return true
     }).then(res => {
-        console.log('en');
-        console.log(res);
+
         if (res === false) {
-            console.log('falsjflj');
             return false
         }
         if (res !== true) {
-            friends.push(frndFour);
+            friends.push(getRequiredFields(res));
         }
-        console.log('add user called');
-        AddUser(gitId, clg, friends, loc, name);
-        console.log(res);
+        AddUser(mainUser, clg, friends, loc, name);
+
     }).catch(error => {
         console.error(error);
     });
