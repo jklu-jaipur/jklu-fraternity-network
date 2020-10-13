@@ -47,8 +47,6 @@ class viz extends Component {
                 this.chart = friendNetwork;
 
             });
-
-
     }
 
     componentWillUnmount() {
