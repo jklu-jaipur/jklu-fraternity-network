@@ -41,3 +41,9 @@
         margin-bottom: -30px;
     }
   }
+
+.main{
+    display: flex;
+    justify-content: center;
+    margin-left: 50px;
+}
