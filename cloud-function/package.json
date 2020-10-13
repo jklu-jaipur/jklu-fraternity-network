@@ -1,0 +1,10 @@
+{
+  "name": "pr-webhook",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Shubham Bhandari",
+  "license": "MIT",
+  "dependencies": {
+    "firebase": "^7.23.0"
+  }
+}
