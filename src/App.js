@@ -6,13 +6,17 @@ import Navigation from "./Components/Navigation";
 import NewUserForm from './Components/NewUserForm.js'
 import Contributors from "./Components/Contributors";
 import ContributorCard from "./BaseComponents/ContributorCard";
+import Form from './Components/Form.js';
 
 function App() {
     return (
         <div>
             <Navigation/>
-            <Viz/>
+            
         </div>
+        // <div>
+        //     < Contributors />
+        // </div>
     );
 }
 

@@ -63,3 +63,18 @@ Note: Beware of modifying this element as it can break the animations - you shou
 .bm-overlay {
     background: rgba(0, 0, 0, 0.3);
 }
+
+.menu-item{
+    color: white;
+    outline: none;
+    font-size: 120%;
+    margin: 30px;
+}
+
+.menu-item:hover{
+    color: grey;
+    text-decoration: none;
+}
+a:hover{
+    cursor: pointer;
+}

@@ -1,0 +1,48 @@
+.alignment{
+    display: flex;
+    flex-direction: row;
+    margin: 0px;
+}
+.transparent-body{
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.1);
+}
+.text{
+    text-align: center;
+    font-size: 230%;
+    margin-bottom: -30px;
+}
+.subtext{
+    margin-top: -20px;
+    text-align: center;
+    font-size: 130%;
+    margin-bottom: -20px;
+}
+.Button-align{
+    float: right;
+    margin: 10px;
+    
+}
+.form-style{
+    display: flex;
+    justify-content: center;
+    margin-bottom: -50px;
+}
+.textarea-1{
+    width: 30ch;
+}
+.designform{
+    margin: 30px;
+    text-align: center;
+   
+}
+
+.button-design{
+    margin-top: 50px;
+    text-align: center;
+    float: center;
+}
+.text-design{
+    font-size: 140%;
+}
