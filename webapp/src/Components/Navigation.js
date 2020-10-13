@@ -5,7 +5,7 @@ import {fallDown as Menu} from 'react-burger-menu';
 import React from 'react';
 import './Navigation.css';
 import {Button} from '@material-ui/core';
-import Form from './Form.js';
+import Form from './UserForm.js';
 import Viz from './Viz.js';
 import Contributors from "./Contributors";
 import AddIcon from '@material-ui/icons/Add';

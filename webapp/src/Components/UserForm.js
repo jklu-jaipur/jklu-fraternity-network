@@ -4,7 +4,7 @@ import TextField from '@material-ui/core/TextField';
 import { FormControl,Button } from '@material-ui/core';
 import MenuItem from '@material-ui/core/MenuItem';
 import ButtonGroup from '@material-ui/core/ButtonGroup';
-import './Form.css';
+import './UserForm.css';
 
 
 
@@ -19,56 +19,46 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const colleges = [
-    {
-      value: 'JKLU',
-      label: 'JK Lakshmipat University',
-    },
-    {
-      value: 'Others',
-      label: 'Others',
-    },
-];
 
-export default function BasicTextFields() {
+export default function UserForm() {
   const classes = useStyles();
-  const [name,setname]=React.useState("");
-  const [git,setgit]=React.useState("");
+  const [name,setName]=React.useState("");
+  const [git,setGithub]=React.useState("");
   const [city,setCity]=React.useState("");
-  const [git1,setgit1]=React.useState("");
-  const [git2,setgit2]=React.useState("");
-  const [git3,setgit3]=React.useState("");
-  const [git4,setgit4]=React.useState("");
+  const [git1,setGit1]=React.useState("");
+  const [git2,setGit2]=React.useState("");
+  const [git3,setGit3]=React.useState("");
+  const [git4,setGit4]=React.useState("");
 
-    const [value, setValue]=React.useState('JK Lakshmipat University');
+    const [clg, setClg]=React.useState('JK Lakshmipat University');
 
     const handleChange = (event) => {
-        setValue(event.target.value);
+        setClg(event.target.value);
     };
     const getName= (event)=>{
-        setname(event.target.value);
-    }
+        setName(event.target.value);
+    };
     const getGit=(event)=>{
-        setgit(event.target.value);
-    }
+        setGithub(event.target.value);
+    };
     const getCity=(event)=>{
         setCity(event.target.value);
-    }
+    };
     const getGit1=(event)=>{
-        setgit1(event.target.value);
-    }
+        setGit1(event.target.value);
+    };
     const getGit2=(event)=>{
-        setgit2(event.target.value);
-    }
+        setGit2(event.target.value);
+    };
     const getGit3=(event)=>{
-        setgit3(event.target.value);
-    }
+        setGit3(event.target.value);
+    };
     const getGit4=(event)=>{
-        setgit4(event.target.value);
-    }
+        setGit4(event.target.value);
+    };
     const allValues=()=>{
-        console.log(git,name,city,value,git1,git2,git3,git4)
-    }
+        console.log(git,name,city,clg,git1,git2,git3,git4)
+    };
 
   return (
     <div>
@@ -79,8 +69,6 @@ export default function BasicTextFields() {
             </form>
             </div>
             <div className="">
-
-                
                 <div className="form-style">
                     <div className="designform">
                         
@@ -99,7 +87,7 @@ export default function BasicTextFields() {
                             name="college"
                             variant="outlined"
                             label="University/College"
-                            value={value}
+                            value={clg}
                             onChange={handleChange}
                             >
                             </TextField>
@@ -123,17 +111,12 @@ export default function BasicTextFields() {
                         <form className={classes.root}  >
                             <TextField  id="outlined-basic" label="GitHub Username" value={git4} onChange={getGit4} name="city" type="text" variant="outlined" />
                         </form>
-                       
                             <div className="">
-                                
                                 <ButtonGroup disableElevation variant="contained" color="primary">
                                     <Button onClick={allValues}>SUBMIT</Button>
                                     <Button>CLEAR</Button>
                                 </ButtonGroup>
-                                
                             </div>
-                           
-                        
                     </div>  
                 </div>
             </div>
