@@ -34,13 +34,13 @@ export default function UserForm() {
     const classes = useStyles();
     const [name, setName] = React.useState("");
     const [git, setGithub] = React.useState("");
-    let [city, setCity] = React.useState("");
+    const [city, setCity] = React.useState("");
     const [git1, setGit1] = React.useState("");
     const [git2, setGit2] = React.useState("");
     const [git3, setGit3] = React.useState("");
     const [git4, setGit4] = React.useState("");
 
-    let [clg, setClg] = React.useState('JK Lakshmipat University');
+    const [clg, setClg] = React.useState('JK Lakshmipat University');
 
     const handleChange = (event) => {
         if (event.target.value === "") {
@@ -109,18 +109,12 @@ export default function UserForm() {
             if (git1 === "") {
                 set_gitname1(true);
             }
-            if (git2 == "") {
+            if (git2 === "") {
                 set_gitname2(true);
             }
         }
-        if (clg!==''){
-            clg=clg.trim();
-        }
-        if (city!==''){
-            city=city.trim();
-        }
-        FormValidation(git.trim().toLowerCase(), clg, git1.trim().toLowerCase(), git2.trim().toLowerCase(),
-            git3.trim().toLowerCase(), git4.trim().toLowerCase(), city, name.trim());
+        FormValidation(git.trim().toLowerCase(), clg.trim(), git1.trim().toLowerCase(), git2.trim().toLowerCase(),
+            git3.trim().toLowerCase(), git4.trim().toLowerCase(), city.trim(), name.trim());
 
     };
     const clearAll = () => {

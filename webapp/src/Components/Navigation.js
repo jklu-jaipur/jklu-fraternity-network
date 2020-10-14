@@ -57,7 +57,6 @@ class Navigation extends React.Component {
     }
     render() {
         return (
-          
             <div>
                 
                 <Menu isOpen={this.state.menuOpen} onStateChange={(state) => this.handleStateChange(state)}> 
@@ -65,7 +64,6 @@ class Navigation extends React.Component {
                     <a  id='add-user' onClick={()=>this.setState({shown1:true,shown:false,shown2:false,menuOpen:false})}  className='menu-item'><AddIcon />  Registration</a>{}
                     <a  id='contributor' onClick={()=>this.setState({shown2:true,shown1:false,shown:false,menuOpen:false})}  className='menu-item'><EmojiPeopleIcon />  Contributors</a>
                     {/*<a onClick={this.showSettings} className="menu-item--small" href="">Settings</a>*/}
-                    
                 </Menu>
                 <div>
                     {this.state.shown ? <Viz />: null}
