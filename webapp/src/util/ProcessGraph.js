@@ -18,7 +18,7 @@ export default function ProcessDbRead(data) {
             processedData.push({
                 'name': user['name'],
                 'value': 0,
-                'friends': [],
+                'friends': user['friends'],
                 'githubId': user['githubId'],
                 'avatar': '',
                 'nameWithAvatar': '',
