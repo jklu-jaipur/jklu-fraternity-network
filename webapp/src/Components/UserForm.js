@@ -11,6 +11,7 @@ import {blue} from '@material-ui/core/colors';
 import FormValidation from '../util/FormValidation';
 import SubmitButtonProgress from "../BaseComponents/SubmitButtonProgress";
 import DataSavedSnackbar from "../BaseComponents/DataSavedSnackbar";
+import SubmitButtonSnackbar from "../BaseComponents/SubmitButtonSnackbar";
 
 
 class UserForm extends React.Component {
@@ -41,14 +42,19 @@ class UserForm extends React.Component {
         git2ErrorMsg: '',
         git3ErrorMsg: '',
         git4ErrorMsg: '',
-        progress: false
+        progress: false,
 
+    };
+    initialSnackbar = {
+        openSnackbar: false,
+        severity: undefined,
+        msg: undefined
     };
 
     constructor(props) {
         super(props);
-        this.state = this.initialState;
-        console.log(this.initialState);
+        this.state = {...this.initialState, ...this.initialSnackbar};
+        console.log({...this.initialState, ...this.initialSnackbar});
     }
 
     checkName(string) {
@@ -214,44 +220,72 @@ class UserForm extends React.Component {
             git4Error: error
         });
     };
+
+    clearSnackbar() {
+        setTimeout(() => {
+            this.setState({
+                openSnackbar: false,
+                severity: undefined,
+                msg: undefined
+            });
+        }, 3000);
+    }
+
     handleSubmit = event => {
         event.preventDefault();
-        // this.setState(
-        //     {
-        //         snackbarOpen: true,
-        //         severity: "success",
-        //         msg: 'Data Saved Successfully'
-        //     }
-        // );
         const {name, gitId, clg, city, git1, git2, git3, git4} = this.state;
         if (!this.state.nameError && !this.state.gitIdError && !this.state.git1Error && !this.state.git2Error) {
-            //todo: loader on screen
             this.setState({progress: true});
             FormValidation(gitId.trim().toLowerCase(), clg.trim(), git1.trim().toLowerCase(),
                 git2.trim().toLowerCase(), git3.trim().toLowerCase(), git4.trim().toLowerCase(), city.trim(),
                 name.trim())
                 .then(res => {
-                    this.setState({
-                        progress: false
-                    });
-                    //    todo: success snackbar
+                    if (res === false) {
+                        this.setState({
+                            progress: false,
+                            openSnackbar: true,
+                            severity: 'error',
+                            msg: 'Please enter correct details.'
+                        });
+
+                    } else {
+                        this.setState({
+                            progress: false,
+                            openSnackbar: true,
+                            severity: 'success',
+                            msg: 'Data Saved Successfully.'
+                        });
+                        this.setState(this.initialState);
+                    }
+                    this.clearSnackbar();
                     console.log(res);
                 }).catch(err => {
-                //    todo: loader stop
-                //todo: failure snackbar
+                this.setState({
+                    progress: false,
+                    openSnackbar: true,
+                    severity: 'error',
+                    msg: 'Please enter correct details.'
+                });
+                this.clearAll();
+                this.clearSnackbar();
                 console.log('error');
                 console.log(err);
             });
         }
     };
+
     clearAll = event => {
         event.preventDefault();
         this.setState(this.initialState);
+        this.clearSnackbar();
     };
+
     render() {
         return (
             <div>
                 <SubmitButtonProgress visible={this.state.progress}/>
+                <SubmitButtonSnackbar openSnackbar={this.state.openSnackbar} severity={this.state.severity}
+                                      msg={this.state.msg}/>
                 <div className="starter">
                     <div>
                         <Paper elevation={7}>
