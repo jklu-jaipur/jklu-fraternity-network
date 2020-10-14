@@ -37,9 +37,9 @@ class Navigation extends React.Component {
       super(props)
       this.state = {
         menuOpen: false,
-        shown:true,
-        shown1:false,
-        shown2:false
+        showViz:true,
+        showRegistration:false,
+        showContributor:false
       }
     }
 
@@ -60,15 +60,15 @@ class Navigation extends React.Component {
             <div>
                 
                 <Menu isOpen={this.state.menuOpen} onStateChange={(state) => this.handleStateChange(state)}> 
-                    <a  id='add-user' onClick={()=>this.setState({shown:true,shown1:false,shown2:false,menuOpen:false})} className='menu-item'><BlurOnIcon />  Home</a>{}
-                    <a  id='add-user' onClick={()=>this.setState({shown1:true,shown:false,shown2:false,menuOpen:false})}  className='menu-item'><AddIcon />  Registration</a>{}
-                    <a  id='contributor' onClick={()=>this.setState({shown2:true,shown1:false,shown:false,menuOpen:false})}  className='menu-item'><EmojiPeopleIcon />  Contributors</a>
+                    <a  id='viz' onClick={()=>this.setState({showViz:true,showRegistration:false,showContributor:false,menuOpen:false})} className='menu-item'><BlurOnIcon />  Home</a>{}
+                    <a  id='add-user' onClick={()=>this.setState({showRegistration:true,showViz:false,showContributor:false,menuOpen:false})}  className='menu-item'><AddIcon />  Registration</a>{}
+                    <a  id='contributor' onClick={()=>this.setState({showContributor:true,showRegistration:false,showViz:false,menuOpen:false})}  className='menu-item'><EmojiPeopleIcon />  Contributors</a>
                     {/*<a onClick={this.showSettings} className="menu-item--small" href="">Settings</a>*/}
                 </Menu>
                 <div>
-                    {this.state.shown ? <Viz />: null}
-                    {this.state.shown1 ? <Form/> : null }
-                    {this.state.shown2 ? <Contributors /> : null}
+                    {this.state.showViz ? <Viz />: null}
+                    {this.state.showRegistration ? <Form/> : null }
+                    {this.state.showContributor ? <Contributors /> : null}
                 
                 </div>
             </div>
