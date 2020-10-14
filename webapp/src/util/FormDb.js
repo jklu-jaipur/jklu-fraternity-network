@@ -34,13 +34,7 @@ function AddUser(githubId, college, friends, location, name) {
             repos: d.pubRepo
         })
     });
-    batch.commit()
-        .then(() => {
-            console.log('Written')
-
-        }).catch(error => {
-        console.error(error)
-    });
+    return batch.commit();
 }
 
 function ReadUsers() {
