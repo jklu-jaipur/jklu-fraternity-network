@@ -35,13 +35,13 @@ function ContributorCard(props) {
         <div className="headname">
             <Paper elevation={10}>
                 <Card className={classes.root} elevation={3} variant="outlined">
-                    <CardContent>
+                    <CardContent className="color-cards">
                         <CardMedia
                             component="img"
-                            alt="Contemplative Reptile"
-                            height="240"
+                            alt={props.name}
+                            height="241"
                             image={logo}
-                            title="Contemplative Reptile"
+                            title={props.name}
                         />
                         <Typography variant="h5" component="h2">
                             {props.name}
@@ -55,8 +55,8 @@ function ContributorCard(props) {
                     </CardContent>
                     <CardActions>
                         <div className="main">
-                            <Button color="primary">LINKEDIN</Button>
-                            <Button className="button-set">GITHUB</Button>
+                            <Button color="primary" href={props.linkedin} target="_blank" >LINKEDIN</Button>
+                            <Button className="button-set" href={props.github} target="_blank">GITHUB</Button>
                         </div>
                     </CardActions>
                 </Card>

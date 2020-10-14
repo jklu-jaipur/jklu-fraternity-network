@@ -7,6 +7,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import ButtonGroup from '@material-ui/core/ButtonGroup';
 import './UserForm.css';
 import Paper from "@material-ui/core/Paper";
+import {blue} from '@material-ui/core/colors';
 import FormValidation from '../util/FormValidation';
 
 
@@ -14,7 +15,11 @@ const useStyles = makeStyles((theme) => ({
     root: {
         '& > *': {
             margin: theme.spacing(1),
-            width: '25ch',
+
+            width: '35ch',
+            textAlign: 'center',
+
+
         },
     },
 }));
@@ -259,11 +264,13 @@ class UserForm extends React.Component {
             <div>
                 <div className="starter">
                     <div>
-                        <form className="text">
-                            <p>Registration</p>
-                        </form>
+                        <Paper elevation={7}>
+                            <form className="text">
+                                <p className="register-text">Registration</p>
+                            </form>
+                        </Paper>
                     </div>
-                    <div className="">
+                    <div className="align-part1">
                         <div className="form-style">
                             <div className="designform">
                                 <form className={'tf-comp'}>
@@ -305,6 +312,7 @@ class UserForm extends React.Component {
                             </div>
                         </div>
 
+
                         <div className="designform">
                             <form className="subtext">
                                 <p>Add Friends</p>
@@ -314,6 +322,7 @@ class UserForm extends React.Component {
                                            error={this.state.git1Error} onChange={this.handleGit1Error} name="git1"
                                            type="text"
                                            helperText={this.state.git1ErrorMsg}
+
                                            variant="outlined"/>
                             </form>
                             <form>
@@ -336,17 +345,20 @@ class UserForm extends React.Component {
                                            helperText={this.state.git4ErrorMsg}
                                            name="git4" type="text" variant="outlined"/>
                             </form>
-                            <div className="">
-                                <Button variant="contained" color="primary" onClick={this.handleSubmit}>SUBMIT</Button>
-                                <Button/>
-                                <Button variant="contained" color="primary" onClick={this.clearAll}>CLEAR</Button>
+
+                            <div className="Button-align designform">
+                                <div className="button-adjust">
+                                    <Button className="button1" color="primary" variant="contained"
+                                            onClick={this.handleSubmit}>SUBMIT</Button>
+
+                                    <Button className="button2" variant="contained" color="secondary"
+                                            onClick={this.clearAll}>CLEAR</Button>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-               
             </div>
-
         );
     }
 }
