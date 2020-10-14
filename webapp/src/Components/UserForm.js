@@ -11,19 +11,6 @@ import {blue} from '@material-ui/core/colors';
 import FormValidation from '../util/FormValidation';
 
 
-const useStyles = makeStyles((theme) => ({
-    root: {
-        '& > *': {
-            margin: theme.spacing(1),
-
-            width: '35ch',
-            textAlign: 'center',
-
-
-        },
-    },
-}));
-
 class UserForm extends React.Component {
     initialState = {
         gitId: '',
@@ -52,9 +39,6 @@ class UserForm extends React.Component {
         git2ErrorMsg: '',
         git3ErrorMsg: '',
         git4ErrorMsg: '',
-        snackbarOpen: false,
-        severity: '',
-        msg: ''
 
     };
 
