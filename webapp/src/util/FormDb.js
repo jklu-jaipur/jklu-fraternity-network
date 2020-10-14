@@ -30,7 +30,7 @@ function AddUser(githubId, college, friends, location, name) {
             name: d.gitId,
             githubId: d.gitId,
             verified: false,
-            img: d.avatar,
+            avatar: d.avatar,
             repos: d.pubRepo
         })
     });

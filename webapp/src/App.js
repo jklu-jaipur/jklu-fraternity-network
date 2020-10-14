@@ -7,8 +7,8 @@ import UserForm from "./Components/UserForm";
 function App() {
     return (
         <div>
-            {/*<Navigation/>*/}
-            <UserForm/>
+            <Navigation/>
+            {/*<UserForm/>*/}
         </div>
         // <div>
         //     < Contributors />

@@ -41,9 +41,25 @@ class viz extends Component {
                 // Add labels
                 friendNetworkSeries.nodes.template.label.text = "{name}";
                 friendNetworkSeries.fontSize = 10;
-                friendNetworkSeries.minRadius = 15;
-                friendNetworkSeries.maxRadius = 40;
+                friendNetworkSeries.minRadius = 30;
+                friendNetworkSeries.maxRadius = 30;
                 friendNetwork.zoomable = true;
+
+                var icon = friendNetworkSeries.nodes.template.createChild(am4core.Image);
+                icon.propertyFields.href = "avatar";
+                icon.horizontalCenter = "middle";
+                icon.verticalCenter = "middle";
+                icon.width = 65;
+                icon.height = 65;
+
+                friendNetworkSeries.links.template.strokeWidth = 5;
+                friendNetworkSeries.links.template.strokeOpacity = 1;
+
+
+                friendNetworkSeries.nodes.template.tooltipText = "{name}{nameWithAvatar} ({githubId})\n Public Repo: [bold]{publicRepo}[/]";
+
+                // friendNetworkSeries.nodes.template.circle.disabled = true;
+                // friendNetworkSeries.nodes.template.outerCircle.disabled = true;
                 this.chart = friendNetwork;
 
             });
