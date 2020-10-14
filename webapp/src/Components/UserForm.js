@@ -9,6 +9,8 @@ import './UserForm.css';
 import Paper from "@material-ui/core/Paper";
 import {blue} from '@material-ui/core/colors';
 import FormValidation from '../util/FormValidation';
+import SubmitButtonProgress from "../BaseComponents/SubmitButtonProgress";
+import DataSavedSnackbar from "../BaseComponents/DataSavedSnackbar";
 
 
 class UserForm extends React.Component {
@@ -39,6 +41,7 @@ class UserForm extends React.Component {
         git2ErrorMsg: '',
         git3ErrorMsg: '',
         git4ErrorMsg: '',
+        progress: false
 
     };
 
@@ -223,11 +226,14 @@ class UserForm extends React.Component {
         const {name, gitId, clg, city, git1, git2, git3, git4} = this.state;
         if (!this.state.nameError && !this.state.gitIdError && !this.state.git1Error && !this.state.git2Error) {
             //todo: loader on screen
+            this.setState({progress: true});
             FormValidation(gitId.trim().toLowerCase(), clg.trim(), git1.trim().toLowerCase(),
                 git2.trim().toLowerCase(), git3.trim().toLowerCase(), git4.trim().toLowerCase(), city.trim(),
                 name.trim())
                 .then(res => {
-                    //todo loader stop
+                    this.setState({
+                        progress: false
+                    });
                     //    todo: success snackbar
                     console.log(res);
                 }).catch(err => {
@@ -242,10 +248,10 @@ class UserForm extends React.Component {
         event.preventDefault();
         this.setState(this.initialState);
     };
-
     render() {
         return (
             <div>
+                <SubmitButtonProgress visible={this.state.progress}/>
                 <div className="starter">
                     <div>
                         <Paper elevation={7}>
