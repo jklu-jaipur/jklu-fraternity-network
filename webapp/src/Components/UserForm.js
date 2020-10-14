@@ -6,14 +6,16 @@ import MenuItem from '@material-ui/core/MenuItem';
 import ButtonGroup from '@material-ui/core/ButtonGroup';
 import './UserForm.css';
 import Paper from "@material-ui/core/Paper";
-import FormValidation from '../util/FormValidation';
+import { blue } from '@material-ui/core/colors';
+// import FormValidation from '../util/FormValidation';
 
 const useStyles = makeStyles((theme) => ({
     root: {
         '& > *': {
             margin: theme.spacing(1),
             width: '35ch',
-            textAlign: 'center'
+            textAlign: 'center',
+            
         },
 
     },
@@ -107,8 +109,8 @@ export default function UserForm() {
                 set_gitname2(true);
             }
         } else {
-            FormValidation(git.trim().toLowerCase(), clg.trim(), git1.trim().toLowerCase(), git2.trim().toLowerCase(),
-                git3.trim().toLowerCase(), git4.trim().toLowerCase(), city.trim(), name.trim());
+            // FormValidation(git.trim().toLowerCase(), clg.trim(), git1.trim().toLowerCase(), git2.trim().toLowerCase(),
+            //     git3.trim().toLowerCase(), git4.trim().toLowerCase(), city.trim(), name.trim());
         }
 
     };
@@ -127,14 +129,18 @@ export default function UserForm() {
         <div>
             <div className="starter">
                 <div>
-                    <form className="text">
-                        <p>Registration</p>
-                    </form>
+                    <Paper elevation={7} > 
+                        <form className="text">
+                            <p className="register-text">Registration</p>
+                        </form>
+                    </Paper>
                 </div>
-                <div className="">
+                
+                <div className="align-part1">
+                    
                     <div className="form-style">
                         <div className="designform">
-
+                            
                             <form className={classes.root}>
                                 <TextField required id="outlined-basic" label="GitHub Username" value={git}
                                            error={git_error} onChange={getGit} name="git" type="text"
@@ -162,8 +168,8 @@ export default function UserForm() {
                             </form>
                         </div>
                     </div>
-
-                    <div className="designform">
+                    
+                    <div className="designform1">
                         <form className="subtext">
                             <p>Add Friends</p>
                         </form>
@@ -183,12 +189,16 @@ export default function UserForm() {
                             <TextField id="outlined-basic" label="GitHub Username" value={git4} onChange={getGit4}
                                        name="city" type="text" variant="outlined"/>
                         </form>
-                        <div className="">
-
-                            <Button variant="contained" color="primary" onClick={allValues}>SUBMIT</Button>
-                            <Button/>
-                            <Button variant="contained" color="primary" onClick={clearAll}>CLEAR</Button>
-                        </div>
+                        
+                    </div>
+                    <div className="Button-align designform">
+                            <div className="button-adjust" >
+                                <Button className="button1" color="primary" variant="contained"  onClick={allValues}>SUBMIT</Button>
+                                {/* <Button></Button>
+                                <Button></Button> */}
+                                <Button className="button2" variant="contained" color="secondary"  onClick={clearAll}>CLEAR</Button>
+                            </div>
+                            
                     </div>
                 </div>
             </div>
