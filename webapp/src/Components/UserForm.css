@@ -35,19 +35,22 @@
 .designform{
     margin: 30px;
     text-align: center;
-   
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
-
+.tf-comp{
+    margin-top: 5%;
+}
 .button-design{
     margin-top: 50px;
     text-align: center;
-    float: center;
 }
 .text-design{
     font-size: 140%;
 }
 .text{
-    
+
     margin-bottom: -40px;
 }
 @media only screen and (max-width: 600px) {
