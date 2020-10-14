@@ -1,6 +1,8 @@
 import React from 'react';
 import ContributorCard from "../BaseComponents/ContributorCard";
 import Paper from '@material-ui/core/Paper';
+import TextField from "@material-ui/core/TextField";
+import {Button} from "@material-ui/core";
 class Contributors extends React.Component {
     render() {
         return (

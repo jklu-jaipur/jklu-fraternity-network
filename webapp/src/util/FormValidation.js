@@ -1,6 +1,6 @@
 import {AddUser} from './FormDb';
 import {Octokit} from '@octokit/core'
-import pat from  '../settings'
+import pat from '../settings'
 
 async function validateGithubId(id) {
     const kit = new Octokit({auth: pat.pat, userAgent: 'network-jklu-webapp'});
@@ -26,7 +26,7 @@ export default function FormValidation(gitId, clg, frndOne, frndTwo, frndThree, 
     unqFriends.delete('');
     unqFriends = Array.from(unqFriends);
     let mainUser = {};
-    validateGithubId(gitId).then(res => {
+    return validateGithubId(gitId).then(res => {
         mainUser = getRequiredFields(res);
         if (unqFriends.includes(gitId) || unqFriends.length < 2) {
             return false
@@ -67,11 +67,7 @@ export default function FormValidation(gitId, clg, frndOne, frndTwo, frndThree, 
         if (res !== true) {
             friends.push(getRequiredFields(res));
         }
-        AddUser(mainUser, clg, friends, loc, name);
-
-    }).catch(error => {
-        console.error(error);
-    });
-
+        return AddUser(mainUser, clg, friends, loc, name);
+    })
 }
 
