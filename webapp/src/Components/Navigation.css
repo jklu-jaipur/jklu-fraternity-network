@@ -5,24 +5,27 @@
     left: 36px;
     top: 36px;
 }
-
+/*todo: change color of burger button*/
 /* Color/shape of burger icon bars */
 .bm-burger-bars {
     background: #373a47;
 }
 
 /* Color/shape of burger icon bars on hover*/
+/*todo: change color to theme color*/
 .bm-burger-bars-hover {
     background: #a90000;
 }
 
 /* Position and sizing of clickable cross button */
+/*todo change h and w of cross*/
 .bm-cross-button {
     height: 24px;
     width: 24px;
 }
 
 /* Color/shape of close button cross */
+/*todo change color according to text*/
 .bm-cross {
     background: #bdc3c7;
 }
@@ -37,6 +40,7 @@ Note: Beware of modifying this element as it can break the animations - you shou
 }
 
 /* General sidebar styles */
+/*todo: change background color according to theme*/
 .bm-menu {
     background: #373a47;
     padding: 2.5em 1.5em 0;
@@ -63,14 +67,14 @@ Note: Beware of modifying this element as it can break the animations - you shou
 .bm-overlay {
     background: rgba(0, 0, 0, 0.3);
 }
-
+/*todo change color of text*/
 .menu-item{
     color: white;
     outline: none;
     font-size: 120%;
     margin: 30px;
 }
-
+/*todo change hover color*/
 .menu-item:hover{
     color: #CACFD2;
     text-decoration: none;

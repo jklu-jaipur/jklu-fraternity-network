@@ -1,15 +1,18 @@
 import React from 'react';
 import ContributorCard from "../BaseComponents/ContributorCard";
-
+import Paper from '@material-ui/core/Paper';
 class Contributors extends React.Component {
     render() {
         return (
             <div>
+                <Paper elevation={10}>
                 <div className="headname">
                     <div>
-                        <p>Designed by</p>
+                        <p>Designed & Developed by</p>
                     </div>
+
                 </div>
+                </Paper>
                 <div className="headName">
                     <ContributorCard name='Dr.Alok Kumar' about='Faculty CSE'/>
                     <ContributorCard name='Shubham Bhandari' about='IV Year CSE'/>

@@ -23,8 +23,8 @@ const useStyles = makeStyles((theme) => ({
 export default function UserForm() {
 
 
-    const [git_error, set_giterror] = React.useState(false);
-    const [git_name, set_gitname] = React.useState(false);
+    const [git_error, setGitError] = React.useState(false);
+    const [git_name, setNameError] = React.useState(false);
     const [git_city, set_gitcity] = React.useState(false);
     const [git_coll, set_gitcoll] = React.useState(false);
     const [git_name1, set_gitname1] = React.useState(false);
@@ -50,7 +50,7 @@ export default function UserForm() {
     };
     const getName = (event) => {
         if (event.target.value === "") {
-            set_gitname(true);
+            setNameError(true);
         }
 
         setName(event.target.value);
@@ -59,7 +59,7 @@ export default function UserForm() {
     };
     const getGit = (event) => {
         if (event.target.value === "") {
-            set_giterror(true);
+            setGitError(true);
         }
 
         setGithub(event.target.value);
@@ -93,18 +93,12 @@ export default function UserForm() {
     };
     const allValues = () => {
         console.log(git, name, city, clg, git1, git2, git3, git4);
-        if (git === "" || name === "" || city === "" || clg === "" || git1 === "" || git2 === "") {
+        if (git === "" || name === "" || git1 === "" || git2 === "") {
             if (git === "") {
-                set_giterror(true);
+                setGitError(true);
             }
             if (name === "") {
-                set_gitname(true);
-            }
-            if (city === "") {
-                set_gitcity(true);
-            }
-            if (clg === "") {
-                set_gitcoll(true);
+                setNameError(true);
             }
             if (git1 === "") {
                 set_gitname1(true);
@@ -112,9 +106,10 @@ export default function UserForm() {
             if (git2 === "") {
                 set_gitname2(true);
             }
+        } else {
+            FormValidation(git.trim().toLowerCase(), clg.trim(), git1.trim().toLowerCase(), git2.trim().toLowerCase(),
+                git3.trim().toLowerCase(), git4.trim().toLowerCase(), city.trim(), name.trim());
         }
-        FormValidation(git.trim().toLowerCase(), clg.trim(), git1.trim().toLowerCase(), git2.trim().toLowerCase(),
-            git3.trim().toLowerCase(), git4.trim().toLowerCase(), city.trim(), name.trim());
 
     };
     const clearAll = () => {
