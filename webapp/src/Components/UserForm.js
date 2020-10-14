@@ -221,14 +221,19 @@ class UserForm extends React.Component {
         });
     };
 
-    clearSnackbar() {
+    clearSnackbar(redirect) {
         setTimeout(() => {
             this.setState({
                 openSnackbar: false,
                 severity: undefined,
                 msg: undefined
             });
+            if (redirect) {
+                this.redirectToRepo();
+                window.location.reload();
+            }
         }, 3000);
+
     }
 
     handleSubmit = event => {
@@ -247,17 +252,19 @@ class UserForm extends React.Component {
                             severity: 'error',
                             msg: 'Please enter correct details.'
                         });
-
+                        this.clearSnackbar(false);
                     } else {
                         this.setState({
                             progress: false,
                             openSnackbar: true,
                             severity: 'success',
-                            msg: 'Data Saved Successfully.'
+                            msg: 'Data Saved Successfully. You will now be redirected to repo.'
                         });
                         this.setState(this.initialState);
+                        this.clearSnackbar(true);
+
                     }
-                    this.clearSnackbar();
+
                     console.log(res);
                 }).catch(err => {
                 this.setState({
@@ -267,13 +274,16 @@ class UserForm extends React.Component {
                     msg: 'Please enter correct details.'
                 });
                 this.clearAll();
-                this.clearSnackbar();
+                this.clearSnackbar(false);
                 console.log('error');
                 console.log(err);
             });
         }
     };
 
+    redirectToRepo = () => {
+        window.open('https://github.com/jklu-jaipur/network-jklu/issues', '_blank');
+    };
     clearAll = event => {
         event.preventDefault();
         this.setState(this.initialState);
