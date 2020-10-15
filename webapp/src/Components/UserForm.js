@@ -333,10 +333,10 @@ class UserForm extends React.Component {
                     </div>
                     <div className="align-part1">
                         <div className="form-style">
-                        
+
                             <div className="designform">
-                            
-                                <form className="textarea-1" className="subtext tf-comp">
+
+                                <form className={["textarea-1", "subtext tf-comp"].join(' ')}>
                                     <p>Details</p>
                                 </form>
                                 <form className={'tf-comp'}>
@@ -379,15 +379,15 @@ class UserForm extends React.Component {
                                     >
                                     </TextField>
                                 </form>
-                                
+
                             </div>
 
                             <div className="designform">
-                            
-                                <form className="textarea-1" className="subtext tf-comp">
+
+                                <form className={["textarea-1", "subtext tf-comp"].join(' ')}>
                                     <p>Add Friends</p>
                                 </form>
-                                <form className={'tf-comp'}>
+                                <form className={["textarea-1", 'tf-comp'].join(' ')}>
                                     <TextField className="textarea-1" required id="outlined-git1"
                                                label="GitHub Username" value={this.state.git1}
                                                error={this.state.git1Error} onChange={this.handleGit1Error} name="git1"
@@ -396,7 +396,7 @@ class UserForm extends React.Component {
 
                                                variant="outlined"/>
                                 </form>
-                                <form className="textarea-1" className={'tf-comp'}>
+                                <form className={["textarea-1", 'tf-comp'].join(' ')}>
                                     <TextField className="textarea-1" required id="outlined-git2"
                                                label="GitHub Username" value={this.state.git2}
                                                error={this.state.git2Error} onChange={this.handleGit2Error} name="git2"
@@ -404,7 +404,7 @@ class UserForm extends React.Component {
                                                helperText={this.state.git2ErrorMsg}
                                                variant="outlined"/>
                                 </form>
-                                <form className="textarea-1" className={'tf-comp'}>
+                                <form className={["textarea-1", 'tf-comp'].join(' ')}>
                                     <TextField className="textarea-1" id="outlined-git3" label="GitHub Username"
                                                value={this.state.git3}
                                                onChange={this.handleGit3Error}
@@ -412,7 +412,7 @@ class UserForm extends React.Component {
                                                error={this.state.git3Error}
                                                name="git3" type="text" variant="outlined"/>
                                 </form>
-                                <form className="textarea-1" className={'tf-comp'}>
+                                <form className={["textarea-1", 'tf-comp'].join(' ')}>
                                     <TextField className="textarea-1" id="outlined-git4" label="GitHub Username"
                                                value={this.state.git4}
                                                onChange={this.handleGit4Error} error={this.state.git4Error}
@@ -428,11 +428,11 @@ class UserForm extends React.Component {
                                                 onClick={this.clearAll}>CLEAR</Button>
                                     </div>
                                 </div>
-                                
+
                             </div>
-                            
+
                         </div>
-                        
+
                     </div>
                 </div>
             </div>

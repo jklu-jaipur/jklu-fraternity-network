@@ -7,27 +7,26 @@ import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import './InfoAccordion.css';
 import Pic from '../media/hack.png';
-import Git from '../media/git.png';
 
 
 const useStyles = makeStyles((theme) => ({
     heading: {
         fontSize: theme.typography.pxToRem(15),
         fontWeight: theme.typography.fontWeightRegular,
-        color:'white'
+        color: 'white'
     },
-    coloring:{
-        backgroundColor:'#2980B9', 
+    coloring: {
+        backgroundColor: '#2980B9',
     },
-    text:{
-        color:'white'
+    text: {
+        color: 'white'
     }
 }));
 
 export default function InfoAccordion(props) {
     const classes = useStyles();
     const [expanded, setExpanded] = React.useState(false);
-    const image =[Pic,Git];
+    // const image =[Pic,Git];
 
     const handleChange = (panel) => (event, isExpanded) => {
         console.log(panel);
@@ -36,21 +35,16 @@ export default function InfoAccordion(props) {
     return (
         <Accordion className={classes.coloring} expanded={expanded === props.id} onChange={handleChange(props.id)}>
             <AccordionSummary className={"coloring"}
-                expandIcon={<ExpandMoreIcon/>}
-                aria-controls={props.controls}
-                id={props.id}
+                              expandIcon={<ExpandMoreIcon/>}
+                              aria-controls={props.controls}
+                              id={props.id}
             >
-                <Typography classeName={"text-style"}  className={classes.heading}>{props.heading}</Typography>
+                <Typography classename={"text-style"} className={classes.heading}>{props.heading}</Typography>
             </AccordionSummary>
-           
-                
-            {/* <img width="auto" height="100px"  src={props.isimage ? props.img : null}></img> */}
-            
-          
-            <AccordionDetails className={props.isimage ? "disp-poster" : "disp-text"} >
-                { props.isimage ? <img width="auto" height="auto" src={Pic}></img> : null}
-                <div className={props.isimage ? "disp-poster-text" : "disp-poster-text-1"}>
-                    <Typography className={"text-style"} className={classes.text}>
+            <AccordionDetails className={props.isImage ? "disp-poster" : "disp-text"}>
+                {props.isImage ? <img width="auto" height="auto" src={Pic} alt={'Hacktoberfest'}/> : null}
+                <div className={props.isImage ? "disp-poster-text" : "disp-poster-text-1"}>
+                    <Typography className={["text-style", classes.text].join(' ')} component={'span'}>
                         {props.content}
                     </Typography>
                 </div>

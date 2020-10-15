@@ -14,7 +14,6 @@ import EmojiPeopleIcon from '@material-ui/icons/EmojiPeople';
 import CommentIcon from '@material-ui/icons/Comment';
 
 
-
 class Navigation extends React.Component {
 
     constructor(props) {
@@ -33,7 +32,6 @@ class Navigation extends React.Component {
     }
 
 
-
     handleStateChange(state) {
         this.setState({menuOpen: state.isOpen})
     }
@@ -48,14 +46,6 @@ class Navigation extends React.Component {
 
                 <Menu isOpen={this.state.menuOpen} onStateChange={(state) => this.handleStateChange(state)}>
                     <span className="jk-tag">JKLU Fraternity Network</span>
-                    {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-                    <a id='info' href={'#'} onClick={() => this.setState({
-                        showInfo: true,
-                        showViz: false,
-                        showRegistration: false,
-                        showContributor: false,
-                        menuOpen: false
-                    })} className='menu-item'><CommentIcon/> Info</a>{}
                     {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
                     <a id='viz' href={'#'} onClick={() => this.setState({
                         showViz: true,
@@ -72,6 +62,14 @@ class Navigation extends React.Component {
                         showContributor: false,
                         menuOpen: false
                     })} className='menu-item'><AddIcon/> Registration</a>{}
+                    {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
+                    <a id='info' href={'#'} onClick={() => this.setState({
+                        showInfo: true,
+                        showViz: false,
+                        showRegistration: false,
+                        showContributor: false,
+                        menuOpen: false
+                    })} className='menu-item'><CommentIcon/> Info</a>{}
                     {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
                     <a id='contributor' href={'#'} onClick={() => this.setState({
                         showContributor: true,
