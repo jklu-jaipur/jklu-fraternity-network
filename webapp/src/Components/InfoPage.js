@@ -30,7 +30,10 @@ const openSourceInfo = [
             <p> This year has really driven us apart by barring us into our homes. But its time to connect together (of
                 course virtually).</p>,
             <p>This time we present to you a webapp dedicated to JKLU students and Open source.Are you the most popular
-                student/faculty/staff member at JKLU? If yes, here is your chance to prove it.</p>]
+                student/faculty/staff member at JKLU? If yes, here is your chance to prove it.</p>,
+            <p>One pull request lands you to our Network Graph where you can flaunt how strong your network is and 4
+                pull requests to a <b>limited edition T-shirt</b> or a chance to <b>plant a tree</b>. </p>,
+            <p>Click the top right corner to reach the github repository and make the contribution.</p>]
 
     },
     {
@@ -94,17 +97,12 @@ export default function InfoPage() {
             </Paper>
             <br/>
             <br/>
-
             <div className={classes.root}>
                 {
                     accordions
                 }
             </div>
-
         </div>
-
     );
-
-
 }
 
