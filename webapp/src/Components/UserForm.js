@@ -96,7 +96,7 @@ class UserForm extends React.Component {
                 }
 
             } else {
-                return {msg: 'Github id has alphanumeric char and hyphen.', error: true};
+                return {msg: 'Github id has alphanumeric char and -.', error: true};
             }
         } else {
             return {msg: 'Github id is longer than 3 characters.', error: true};
@@ -111,7 +111,7 @@ class UserForm extends React.Component {
             if (RegExp('(^[a-zA-Z0-9][a-zA-Z0-9\\-]+[a-zA-Z0-9])$').test(string)) {
                 return {msg: 'Enter your friend\'s github id.', error: false};
             } else {
-                return {msg: 'Github id has alphanumeric char and hyphen.', error: true};
+                return {msg: 'Github id has alphanumeric char and -.', error: true};
             }
         }
         if (0 < string.trim().length && string.trim().length < 4) {
@@ -227,21 +227,6 @@ class UserForm extends React.Component {
         });
     };
 
-    clearSnackbar(redirect) {
-        setTimeout(() => {
-            this.setState({
-                openSnackbar: false,
-                severity: undefined,
-                msg: undefined
-            });
-            if (redirect) {
-                this.redirectToRepo();
-                console.log('redirect');
-                window.location.reload();
-            }
-        }, 3000);
-
-    }
 
     checkErrors() {
         return !(!this.state.nameError && !this.state.gitIdError && !this.state.git1Error && !this.state.git2Error
@@ -252,43 +237,49 @@ class UserForm extends React.Component {
         event.preventDefault();
         const {name, gitId, clg, city, git1, git2, git3, git4} = this.state;
         if (!this.checkErrors()) {
+            console.log(this.state);
             this.setState({progress: true});
             FormValidation(gitId.trim().toLowerCase(), clg.trim(), git1.trim().toLowerCase(),
                 git2.trim().toLowerCase(), git3.trim().toLowerCase(), git4.trim().toLowerCase(), city.trim(),
                 name.trim())
                 .then(res => {
+                    console.log(this.state);
                     if (res === false) {
                         this.setState({
                             progress: false,
                             openSnackbar: true,
                             severity: 'error',
-                            msg: 'Please enter correct details or user already exists.'
+                            msg: 'Please enter correct details.'
                         });
                         this.clearSnackbar(false);
                     } else {
+                        console.log(this.state);
                         this.setState({
                             progress: false,
                             openSnackbar: true,
                             severity: 'success',
                             msg: 'Data Saved Successfully. You will now be redirected to repo.'
                         });
-                        this.setState(this.initialState);
+
                         this.clearSnackbar(true);
+                        this.clearAll();
                     }
                     //console.log(res);
                 }).catch(err => {
+                console.log(this.state);
                 this.setState({
                     progress: false,
                     openSnackbar: true,
                     severity: 'error',
-                    msg: 'Please enter correct details.'
+                    msg: 'Please correctly fill required fields.'
                 });
                 this.clearAll();
-                this.clearSnackbar(false);
+                this.clearSnackbar(false)
                 //console.log('error');
                 //console.log(err);
             });
         } else {
+            console.log(this.state);
             this.setState({
                 progress: false,
                 openSnackbar: true,
@@ -300,14 +291,31 @@ class UserForm extends React.Component {
     };
 
     redirectToRepo = () => {
-        let newTab = window.open();
-        newTab.location.href = this.state.redirectUrl;
+        window.open(
+            this.state.redirectUrl, "_blank");
     };
     clearAll = event => {
         // event.preventDefault();
         this.setState(this.initialState);
-        this.clearSnackbar(false);
     };
+
+    clearSnackbar(redirect) {
+        console.log(this.state);
+        setTimeout(() => {
+            console.log(this.state);
+            this.setState({
+                openSnackbar: false,
+                severity: 'error',
+                msg: undefined
+            });
+            if (redirect) {
+                this.redirectToRepo();
+                // console.log('redirect');
+                window.location.reload();
+            }
+        }, 3000);
+
+    }
 
     render() {
         return (

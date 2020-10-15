@@ -9,6 +9,7 @@ function getFriends(friends) {
 }
 
 function addToBatch(batch, id) {
+
     batch.set(db.collection('users').doc(id.gitId.toLowerCase()), {
         clg: '',
         friends: [],
@@ -19,23 +20,30 @@ function addToBatch(batch, id) {
         avatar: id.avatar,
         repos: id.pubRepo
     })
+
 }
 
 //github id: string, college: string, friends: array of github ids, loc=string, name=string,verified=boolean,uid to be generated
 function AddUser(githubId, college, friends, location, name) {
     let batch = db.batch();
-    //console.log(batch);
-    batch.set(db.collection('users').doc(githubId.gitId.toLowerCase()), {
-        clg: college,
-        friends: getFriends(friends),
-        loc: location,
-        name: name,
-        githubId: githubId.gitId,
-        verified: false,
-        avatar: githubId.avatar,
-        repos: githubId.pubRepo
+    db.collection('users').doc(githubId.gitId.toLowerCase()).get().then(docSnapshot => {
+        let friendList = [];
+        if (docSnapshot.exists) {
+            friendList = docSnapshot.data()['friends'];
+        }
+        return friendList
+    }).then((friendList) => {
+        return batch.set(db.collection('users').doc(githubId.gitId.toLowerCase()), {
+            clg: college,
+            friends: [...new Set(friendList.concat(getFriends(friends)))],
+            loc: location,
+            name: name,
+            githubId: githubId.gitId,
+            verified: false,
+            avatar: githubId.avatar,
+            repos: githubId.pubRepo
+        });
     });
-
     db.collection('users').doc(friends[0].gitId.toLowerCase()).get().then(docSnapshot => {
         //console.log(batch);
         if (!docSnapshot.exists) {
@@ -73,6 +81,7 @@ function AddUser(githubId, college, friends, location, name) {
         return batch.commit();
     });
 }
+
 function ReadUsers() {
     return db.collection('users').get()
         .then(querySnapshot => {
