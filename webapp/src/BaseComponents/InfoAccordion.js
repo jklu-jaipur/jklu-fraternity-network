@@ -15,7 +15,7 @@ const useStyles = makeStyles((theme) => ({
         color:'white'
     },
     coloring:{
-        backgroundColor:'#212F3D', 
+        backgroundColor:'#2980B9', 
     },
     text:{
         color:'white'
@@ -37,10 +37,10 @@ export default function InfoAccordion(props) {
                 aria-controls={props.controls}
                 id={props.id}
             >
-                <Typography  className={classes.heading}>{props.heading}</Typography>
+                <Typography classes={"text-style"}  className={classes.heading}>{props.heading}</Typography>
             </AccordionSummary>
             <AccordionDetails>
-                <Typography className={classes.text}>
+                <Typography classes={"text-style"} className={classes.text}>
                     {props.content}
                 </Typography>
             </AccordionDetails>

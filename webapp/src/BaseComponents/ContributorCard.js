@@ -13,6 +13,7 @@ import Paper from '@material-ui/core/Paper';
 const useStyles = makeStyles({
     root: {
         minWidth: 275,
+        fontFamily:  'Work Sans'
     },
     bullet: {
         display: 'inline-block',
@@ -35,7 +36,7 @@ function ContributorCard(props) {
         <div className="headname">
             <Paper elevation={10}>
                 <Card className={classes.root} elevation={3} variant="outlined">
-                    <CardContent className="color-cards">
+                    <CardContent >
                         <CardMedia
                             component="img"
                             alt={props.name}
@@ -43,20 +44,20 @@ function ContributorCard(props) {
                             image={logo}
                             title={props.name}
                         />
-                        <Typography variant="h5" component="h2">
+                        <Typography className="color-cards" variant="h5" component="h2">
                             {props.name}
                         </Typography>
-                        <Typography className={classes.pos} color="textSecondary">
+                        <Typography className="color-cards" className={classes.pos} color="textSecondary">
                             {props.about}
                         </Typography>
-                        <Typography variant="body2" component="p">
+                        <Typography className="color-cards" variant="body2" component="p">
                             JKLU
                         </Typography>
                     </CardContent>
                     <CardActions>
                         <div className="main">
-                            <Button color="primary" href={props.linkedin} target="_blank" >LINKEDIN</Button>
-                            <Button className="button-set" href={props.github} target="_blank">GITHUB</Button>
+                            <Button className="color-cards" color="primary" href={props.linkedin} target="_blank" >LINKEDIN</Button>
+                            <Button className="color-cards" className="button-set" href={props.github} target="_blank">GITHUB</Button>
                         </div>
                     </CardActions>
                 </Card>

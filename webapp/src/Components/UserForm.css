@@ -53,16 +53,12 @@
 .button1{
     position: relative;
     left:10px;
-    width: 35px;
-    height: 30px;
+    
    
 }
 .button2{
     position: relative;
-    left:20px;
-    width: 35px;
-    height: 30px;
-    
+    left:20px;    
 }
 @media only screen and (max-width: 600px) {
     body{
@@ -87,4 +83,11 @@
 .tf-comp{
     margin: 10px;
     
+}
+.paper-respo{
+    padding: 20px;
+    
+}
+.paper-respo-1{
+    padding: 0px;
 }

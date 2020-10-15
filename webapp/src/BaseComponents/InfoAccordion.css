@@ -1,0 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans&display=swap');
+
+.MuiIconButton-root{
+    color: white;
+}
+.MuiTypography-body1{
+    font-family: 'Work Sans', sans-serif !important;
+}

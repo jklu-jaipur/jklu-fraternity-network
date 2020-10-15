@@ -317,7 +317,7 @@ class UserForm extends React.Component {
                                       msg={this.state.msg}/>
                 <div className="starter">
                     <div>
-                        <Paper elevation={7} className="paper-respo">
+                        <Paper elevation={7} className="paper-respo-1">
                             <form className="text">
                                 <p className="register-text">Registration</p>
                             </form>
@@ -325,7 +325,9 @@ class UserForm extends React.Component {
                     </div>
                     <div className="align-part1">
                         <div className="form-style">
+                        
                             <div className="designform">
+                            
                                 <form className="textarea-1" className="subtext tf-comp">
                                     <p>Details</p>
                                 </form>
@@ -369,9 +371,11 @@ class UserForm extends React.Component {
                                     >
                                     </TextField>
                                 </form>
+                                
                             </div>
-                            <div className="designform">
 
+                            <div className="designform">
+                            
                                 <form className="textarea-1" className="subtext tf-comp">
                                     <p>Add Friends</p>
                                 </form>
@@ -416,8 +420,11 @@ class UserForm extends React.Component {
                                                 onClick={this.clearAll}>CLEAR</Button>
                                     </div>
                                 </div>
+                                
                             </div>
+                            
                         </div>
+                        
                     </div>
                 </div>
             </div>
