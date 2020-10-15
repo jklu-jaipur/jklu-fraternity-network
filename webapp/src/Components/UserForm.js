@@ -262,7 +262,7 @@ class UserForm extends React.Component {
                             progress: false,
                             openSnackbar: true,
                             severity: 'error',
-                            msg: 'Please enter correct details.'
+                            msg: 'Please enter correct details or user already exists.'
                         });
                         this.clearSnackbar(false);
                     } else {
@@ -274,7 +274,6 @@ class UserForm extends React.Component {
                         });
                         this.setState(this.initialState);
                         this.clearSnackbar(true);
-
                     }
                     //console.log(res);
                 }).catch(err => {
@@ -305,7 +304,7 @@ class UserForm extends React.Component {
         newTab.location.href = this.state.redirectUrl;
     };
     clearAll = event => {
-        event.preventDefault();
+        // event.preventDefault();
         this.setState(this.initialState);
         this.clearSnackbar(false);
     };
