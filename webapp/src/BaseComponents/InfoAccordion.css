@@ -6,3 +6,17 @@
 .MuiTypography-body1{
     font-family: 'Work Sans', sans-serif !important;
 }
+.disp-poster{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.disp-poster-text{
+    margin-top: 20px;
+}
+.disp-poster-text-1{
+    margin-top: -20px;
+}
+.disp-text{
+    
+}

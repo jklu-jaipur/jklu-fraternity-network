@@ -7,6 +7,8 @@ import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import Paper from "@material-ui/core/Paper";
 import './InfoAccordion.css';
+import Pic from '../media/hacktoberfest1.png';
+
 
 const useStyles = makeStyles((theme) => ({
     heading: {
@@ -39,10 +41,18 @@ export default function InfoAccordion(props) {
             >
                 <Typography classes={"text-style"}  className={classes.heading}>{props.heading}</Typography>
             </AccordionSummary>
-            <AccordionDetails>
-                <Typography classes={"text-style"} className={classes.text}>
-                    {props.content}
-                </Typography>
+           
+                
+            {/* <img width="auto" height="100px"  src={props.isimage ? props.img : null}></img> */}
+            
+          
+            <AccordionDetails className={props.isimage ? "disp-poster" : "disp-text"} >
+                { props.isimage ? <img width="80%" height="50%" src={Pic}></img> : null}
+                <div className={props.isimage ? "disp-poster-text" : "disp-poster-text-1"}>
+                    <Typography classes={"text-style"} className={classes.text}>
+                        {props.content}
+                    </Typography>
+                </div>
             </AccordionDetails>
         </Accordion>
     );
