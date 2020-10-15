@@ -3,7 +3,7 @@ firebase.js
 # dependencies
 **/node_modules
 /.pnp
-
+**/build
 .pnp.js
 settings.json
 # testing
