@@ -11,7 +11,7 @@ import SubmitButtonSnackbar from "../BaseComponents/SubmitButtonSnackbar";
 
 class UserForm extends React.Component {
     initialState = {
-        redirectUrl:'https://github.com/jklu-jaipur/jklu-fraternity-network/issues',
+        redirectUrl: 'https://github.com/jklu-jaipur/jklu-fraternity-network/issues',
         gitId: '',
         name: '',
         city: '',
@@ -243,11 +243,15 @@ class UserForm extends React.Component {
 
     }
 
+    checkErrors() {
+        return !(!this.state.nameError && !this.state.gitIdError && !this.state.git1Error && !this.state.git2Error
+            && this.state.name.trim() !== '' && this.state.gitId !== '' && this.state.git1 !== '' && this.state.git2 !== '');
+    }
+
     handleSubmit = event => {
         event.preventDefault();
         const {name, gitId, clg, city, git1, git2, git3, git4} = this.state;
-        if (!this.state.nameError && !this.state.gitIdError && !this.state.git1Error && !this.state.git2Error
-            && this.state.name.trim() !== '' && this.state.gitId !== '' && this.state.git1 !== '' && this.state.git2 !== '') {
+        if (!this.checkErrors()) {
             this.setState({progress: true});
             FormValidation(gitId.trim().toLowerCase(), clg.trim(), git1.trim().toLowerCase(),
                 git2.trim().toLowerCase(), git3.trim().toLowerCase(), git4.trim().toLowerCase(), city.trim(),
@@ -272,7 +276,6 @@ class UserForm extends React.Component {
                         this.clearSnackbar(true);
 
                     }
-
                     //console.log(res);
                 }).catch(err => {
                 this.setState({
