@@ -24,6 +24,12 @@
   Click on create pull request
   
   ![alt text](https://github.com/jklu-jaipur/jklu-fraternity-network/blob/main/assets/5.png)
+  
+  **Now we will verify and accept your pull request after which you can visualize yourself on our [website](https://network-jklu.web.app/) , this pull request will also be consider for your Hactoberfest contribution**
+  
+* You can make make pull request as per your wish just dont register yourself again on the webapp
+* To update your data or add new friends to existing list just register yourself again on webapp
+* Raise an issue in case you want to remove your data
  
  
    
