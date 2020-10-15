@@ -12,7 +12,14 @@ const useStyles = makeStyles((theme) => ({
     heading: {
         fontSize: theme.typography.pxToRem(15),
         fontWeight: theme.typography.fontWeightRegular,
+        color:'white'
     },
+    coloring:{
+        backgroundColor:'#212F3D', 
+    },
+    text:{
+        color:'white'
+    }
 }));
 
 export default function InfoAccordion(props) {
@@ -24,16 +31,16 @@ export default function InfoAccordion(props) {
         setExpanded(isExpanded ? panel : false);
     };
     return (
-        <Accordion className={"coloring"} expanded={expanded === props.id} onChange={handleChange(props.id)}>
-            <AccordionSummary
+        <Accordion className={classes.coloring} expanded={expanded === props.id} onChange={handleChange(props.id)}>
+            <AccordionSummary className={"coloring"}
                 expandIcon={<ExpandMoreIcon/>}
                 aria-controls={props.controls}
                 id={props.id}
             >
-                <Typography className={classes.heading}>{props.heading}</Typography>
+                <Typography  className={classes.heading}>{props.heading}</Typography>
             </AccordionSummary>
             <AccordionDetails>
-                <Typography>
+                <Typography className={classes.text}>
                     {props.content}
                 </Typography>
             </AccordionDetails>
