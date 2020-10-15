@@ -13,17 +13,18 @@ export default function ProcessDbRead(data) {
                 'publicRepo': user['repos'],
                 'nameWithAvatar': user['name']
             });
-        } else {
-            processedData.push({
-                'name': user['name'],
-                'value': 0,
-                'friends': user['friends'],
-                'githubId': user['githubId'],
-                'avatar': '',
-                'nameWithAvatar': '',
-                'publicRepo':user['repos']
-            })
         }
+        // } else {
+        //     processedData.push({
+        //         'name': user['name'],
+        //         'value': 0,
+        //         'friends': user['friends'],
+        //         'githubId': user['githubId'],
+        //         'avatar': '',
+        //         'nameWithAvatar': '',
+        //         'publicRepo':user['repos']
+        //     })
+        // }
     }
     return processedData;
 }
