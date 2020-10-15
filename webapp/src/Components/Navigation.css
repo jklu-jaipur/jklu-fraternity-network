@@ -77,7 +77,7 @@ Note: Beware of modifying this element as it can break the animations - you shou
 }
 /*todo change hover color*/
 .menu-item:hover{
-    color: #34495E;
+    color: #00203FFF;
     text-decoration: none;
 }
 a:hover{

@@ -24,7 +24,7 @@ export default function InfoAccordion(props) {
         setExpanded(isExpanded ? panel : false);
     };
     return (
-        <Accordion expanded={expanded === props.id} onChange={handleChange(props.id)}>
+        <Accordion className={"coloring"} expanded={expanded === props.id} onChange={handleChange(props.id)}>
             <AccordionSummary
                 expandIcon={<ExpandMoreIcon/>}
                 aria-controls={props.controls}

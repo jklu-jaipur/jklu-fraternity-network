@@ -8,7 +8,7 @@ class Contributors extends React.Component {
     render() {
         return (
             <div>
-                <Paper elevation={10}>
+                <Paper elevation={10} >
                     <div className="headname">
                         <div className="text-head">
                             <p>Designed & Developed by</p>

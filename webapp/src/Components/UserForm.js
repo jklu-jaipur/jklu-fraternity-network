@@ -6,7 +6,7 @@ import {Button} from '@material-ui/core';
 import './UserForm.css';
 import Paper from "@material-ui/core/Paper";
 
-import FormValidation from '../util/FormValidation';
+// import FormValidation from '../util/FormValidation';
 import SubmitButtonProgress from "../BaseComponents/SubmitButtonProgress";
 
 import SubmitButtonSnackbar from "../BaseComponents/SubmitButtonSnackbar";
@@ -240,43 +240,43 @@ class UserForm extends React.Component {
         const {name, gitId, clg, city, git1, git2, git3, git4} = this.state;
         if (!this.state.nameError && !this.state.gitIdError && !this.state.git1Error && !this.state.git2Error) {
             this.setState({progress: true});
-            FormValidation(gitId.trim().toLowerCase(), clg.trim(), git1.trim().toLowerCase(),
-                git2.trim().toLowerCase(), git3.trim().toLowerCase(), git4.trim().toLowerCase(), city.trim(),
-                name.trim())
-                .then(res => {
-                    if (res === false) {
-                        this.setState({
-                            progress: false,
-                            openSnackbar: true,
-                            severity: 'error',
-                            msg: 'Please enter correct details.'
-                        });
-                        this.clearSnackbar(false);
-                    } else {
-                        this.setState({
-                            progress: false,
-                            openSnackbar: true,
-                            severity: 'success',
-                            msg: 'Data Saved Successfully. You will now be redirected to repo.'
-                        });
-                        this.setState(this.initialState);
-                        this.clearSnackbar(true);
+            // FormValidation(gitId.trim().toLowerCase(), clg.trim(), git1.trim().toLowerCase(),
+            //     git2.trim().toLowerCase(), git3.trim().toLowerCase(), git4.trim().toLowerCase(), city.trim(),
+            //     name.trim())
+            //     .then(res => {
+            //         if (res === false) {
+            //             this.setState({
+            //                 progress: false,
+            //                 openSnackbar: true,
+            //                 severity: 'error',
+            //                 msg: 'Please enter correct details.'
+            //             });
+            //             this.clearSnackbar(false);
+            //         } else {
+            //             this.setState({
+            //                 progress: false,
+            //                 openSnackbar: true,
+            //                 severity: 'success',
+            //                 msg: 'Data Saved Successfully. You will now be redirected to repo.'
+            //             });
+            //             this.setState(this.initialState);
+            //             this.clearSnackbar(true);
 
-                    }
+            //         }
 
-                    //console.log(res);
-                }).catch(err => {
-                this.setState({
-                    progress: false,
-                    openSnackbar: true,
-                    severity: 'error',
-                    msg: 'Please enter correct details.'
-                });
-                this.clearAll();
-                this.clearSnackbar(false);
-                //console.log('error');
-                //console.log(err);
-            });
+            //         //console.log(res);
+            //     }).catch(err => {
+            //     this.setState({
+            //         progress: false,
+            //         openSnackbar: true,
+            //         severity: 'error',
+            //         msg: 'Please enter correct details.'
+            //     });
+            //     this.clearAll();
+            //     this.clearSnackbar(false);
+            //     //console.log('error');
+            //     //console.log(err);
+            // });
         }
     };
 
@@ -297,7 +297,7 @@ class UserForm extends React.Component {
                                       msg={this.state.msg}/>
                 <div className="starter">
                     <div>
-                        <Paper elevation={7}>
+                        <Paper elevation={7} className="paper-respo">
                             <form className="text">
                                 <p className="register-text">Registration</p>
                             </form>
@@ -306,8 +306,11 @@ class UserForm extends React.Component {
                     <div className="align-part1">
                         <div className="form-style">
                             <div className="designform">
+                                <form className="textarea-1" className="subtext tf-comp">
+                                    <p>Details</p>
+                                </form>
                                 <form className={'tf-comp'}>
-                                    <TextField required id="outlined-gitId" autoFocus={true} label="GitHub Username"
+                                    <TextField className="textarea-1" required id="outlined-gitId" autoFocus={true} label="GitHub Username"
                                                value={this.state.gitId}
                                                error={this.state.gitIdError} onChange={this.handleGitIdChange}
                                                name="git"
@@ -316,22 +319,23 @@ class UserForm extends React.Component {
                                                variant="outlined"/>
                                 </form>
                                 <form className={'tf-comp'}>
-                                    <TextField required id="outlined-name" label="Name" value={this.state.name}
+                                    <TextField className="textarea-1" required id="outlined-name" label="Name" value={this.state.name}
                                                onChange={this.handleNameChange}
                                                error={this.state.nameError} name="name" type="text" variant="outlined"
                                                helperText={this.state.nameErrorMsg}/>
                                 </form>
                                 <form className={'tf-comp'}>
-                                    <TextField id="outlined-city" label="City" value={this.state.city}
+                                    <TextField className="textarea-1" id="outlined-city" label="City" value={this.state.city}
                                                onChange={this.handleCityChange}
                                                name="city"
                                                error={this.state.cityError} helperText={this.state.cityErrorMsg}
                                                type="text"
                                                variant="outlined"/>
                                 </form>
-                                <form className={'tf-comp'}>
+                                <form  className={'tf-comp'}>
                                     <TextField
                                         id="outlined-clg"
+                                        className="textarea-1"
                                         name="college"
                                         variant="outlined"
                                         label="University/College"
@@ -343,49 +347,47 @@ class UserForm extends React.Component {
                                     </TextField>
                                 </form>
                             </div>
-                        </div>
+                            <div className="designform">
+                            
+                                <form className="textarea-1" className="subtext tf-comp">
+                                    <p>Add Friends</p>
+                                </form>
+                                <form  className={'tf-comp'}>
+                                    <TextField className="textarea-1" required id="outlined-git1" label="GitHub Username" value={this.state.git1}
+                                            error={this.state.git1Error} onChange={this.handleGit1Error} name="git1"
+                                            type="text"
+                                            helperText={this.state.git1ErrorMsg}
 
+                                            variant="outlined"/>
+                                </form>
+                                <form className="textarea-1" className={'tf-comp'}>
+                                    <TextField className="textarea-1" required id="outlined-git2" label="GitHub Username" value={this.state.git2}
+                                            error={this.state.git2Error} onChange={this.handleGit2Error} name="git2"
+                                            type="text"
+                                            helperText={this.state.git2ErrorMsg}
+                                            variant="outlined"/>
+                                </form>
+                                <form className="textarea-1" className={'tf-comp'}>
+                                    <TextField className="textarea-1" id="outlined-git3" label="GitHub Username" value={this.state.git3}
+                                            onChange={this.handleGit3Error}
+                                            helperText={this.state.git3ErrorMsg}
+                                            error={this.state.git3Error}
+                                            name="git3" type="text" variant="outlined"/>
+                                </form>
+                                <form className="textarea-1" className={'tf-comp'}>
+                                    <TextField className="textarea-1" id="outlined-git4" label="GitHub Username" value={this.state.git4}
+                                            onChange={this.handleGit4Error} error={this.state.git4Error}
+                                            helperText={this.state.git4ErrorMsg}
+                                            name="git4" type="text" variant="outlined"/>
+                                </form>
+                                <div className="Button-align designform">
+                                    <div className="button-adjust">
+                                        <Button className="button1" color="primary" variant="contained"
+                                                        onClick={this.handleSubmit}>SUBMIT</Button>
 
-                        <div className="designform">
-                            <form className="subtext">
-                                <p>Add Friends</p>
-                            </form>
-                            <form>
-                                <TextField required id="outlined-git1" label="GitHub Username" value={this.state.git1}
-                                           error={this.state.git1Error} onChange={this.handleGit1Error} name="git1"
-                                           type="text"
-                                           helperText={this.state.git1ErrorMsg}
-
-                                           variant="outlined"/>
-                            </form>
-                            <form>
-                                <TextField required id="outlined-git2" label="GitHub Username" value={this.state.git2}
-                                           error={this.state.git2Error} onChange={this.handleGit2Error} name="git2"
-                                           type="text"
-                                           helperText={this.state.git2ErrorMsg}
-                                           variant="outlined"/>
-                            </form>
-                            <form>
-                                <TextField id="outlined-git3" label="GitHub Username" value={this.state.git3}
-                                           onChange={this.handleGit3Error}
-                                           helperText={this.state.git3ErrorMsg}
-                                           error={this.state.git3Error}
-                                           name="git3" type="text" variant="outlined"/>
-                            </form>
-                            <form>
-                                <TextField id="outlined-git4" label="GitHub Username" value={this.state.git4}
-                                           onChange={this.handleGit4Error} error={this.state.git4Error}
-                                           helperText={this.state.git4ErrorMsg}
-                                           name="git4" type="text" variant="outlined"/>
-                            </form>
-
-                            <div className="Button-align designform">
-                                <div className="button-adjust">
-                                    <Button className="button1" color="primary" variant="contained"
-                                            onClick={this.handleSubmit}>SUBMIT</Button>
-
-                                    <Button className="button2" variant="contained" color="secondary"
-                                            onClick={this.clearAll}>CLEAR</Button>
+                                        <Button className="button2" variant="contained" color="secondary"
+                                                        onClick={this.clearAll}>CLEAR</Button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
