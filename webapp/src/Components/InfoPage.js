@@ -29,11 +29,12 @@ const openSourceInfo = [
             
     }, {
         isimage:false,
+        key: 1,
         controls: 'one',
         id: 'one',
         heading: 'Steps for Pull request',
         content: [['Steps in order to show your profile name on Graph i.e. Home page.' ],[<br />],
-                  ['1) Make Pull Request (hope you have recieved a mail on this).'],[<br />],
+                  ['1) Make Pull Request (hope you have received a mail on this).'],[<br />],
                   ['2) Try to make a valuable and good contribution.'],[<br />],
                   ['3) We will review your code.'],[<br />],
                   ['4) If you pull request got merged your name will appear in the graph.'],[<br />],
@@ -41,6 +42,7 @@ const openSourceInfo = [
     },
     {
         isimage:false,
+        key: 2,
         controls: 'two',
         id: 'two',
         heading: 'Open source',
@@ -50,6 +52,7 @@ const openSourceInfo = [
     },
     {
         isimage:false,
+        key: 3,
         controls: 'three',
         id: 'three',
         heading: 'Github',
@@ -59,6 +62,7 @@ const openSourceInfo = [
     },
     {   
         isimage:true,
+        key: 4,
         img:{Pic},
         controls: 'four',
         id: 'four',

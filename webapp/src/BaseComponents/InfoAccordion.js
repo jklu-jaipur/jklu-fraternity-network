@@ -5,7 +5,6 @@ import AccordionSummary from '@material-ui/core/AccordionSummary';
 import AccordionDetails from '@material-ui/core/AccordionDetails';
 import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import Paper from "@material-ui/core/Paper";
 import './InfoAccordion.css';
 import Pic from '../media/hacktoberfest1.png';
 
@@ -39,7 +38,7 @@ export default function InfoAccordion(props) {
                 aria-controls={props.controls}
                 id={props.id}
             >
-                <Typography classes={"text-style"}  className={classes.heading}>{props.heading}</Typography>
+                <Typography classeName={"text-style"}  className={classes.heading}>{props.heading}</Typography>
             </AccordionSummary>
            
                 
@@ -49,7 +48,7 @@ export default function InfoAccordion(props) {
             <AccordionDetails className={props.isimage ? "disp-poster" : "disp-text"} >
                 { props.isimage ? <img width="80%" height="50%" src={Pic}></img> : null}
                 <div className={props.isimage ? "disp-poster-text" : "disp-poster-text-1"}>
-                    <Typography classes={"text-style"} className={classes.text}>
+                    <Typography className={"text-style"} className={classes.text}>
                         {props.content}
                     </Typography>
                 </div>
