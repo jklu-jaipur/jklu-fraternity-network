@@ -17,7 +17,7 @@ export default function SubmitButtonProgress(props) {
     return (
         <div>
             <Backdrop className={classes.backdrop} open={props.visible}>
-                <CircularProgress color="inherit"/>
+                <CircularProgress color={"inherit"} disableShrink={true}/>
             </Backdrop>
         </div>
     );

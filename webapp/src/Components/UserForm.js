@@ -2,14 +2,12 @@ import React from 'react';
 
 import TextField from '@material-ui/core/TextField';
 import {Button} from '@material-ui/core';
-
+import FormValidation from "../util/FormValidation";
 import './UserForm.css';
 import Paper from "@material-ui/core/Paper";
-
-// import FormValidation from '../util/FormValidation';
 import SubmitButtonProgress from "../BaseComponents/SubmitButtonProgress";
-
 import SubmitButtonSnackbar from "../BaseComponents/SubmitButtonSnackbar";
+import {type} from "@amcharts/amcharts4/core";
 
 
 class UserForm extends React.Component {
@@ -25,21 +23,19 @@ class UserForm extends React.Component {
         gitIdError: false,
         cityError: false,
         clgError: false,
-        userNameError: false,
         nameError: false,
         git1Error: false,
         git2Error: false,
         git3Error: false,
         git4Error: false,
-        gitIdErrorMsg: '',
-        cityErrorMsg: '',
-        clgErrorMsg: '',
-        userNameErrorMsg: '',
-        nameErrorMsg: '',
-        git1ErrorMsg: '',
-        git2ErrorMsg: '',
-        git3ErrorMsg: '',
-        git4ErrorMsg: '',
+        gitIdErrorMsg: 'Enter your Github id.',
+        cityErrorMsg: 'Enter you home city/town.',
+        clgErrorMsg: 'Enter your college/university.',
+        nameErrorMsg: 'Enter your full name.',
+        git1ErrorMsg: 'Enter your friend\'s github id.',
+        git2ErrorMsg: 'Enter your friend\'s github id.',
+        git3ErrorMsg: 'Enter your friend\'s github id.',
+        git4ErrorMsg: 'Enter your friend\'s github id.',
         progress: false,
 
     };
@@ -58,7 +54,7 @@ class UserForm extends React.Component {
     checkName(string) {
         if (string.length >= 3) {
             if (RegExp('^([a-zA-Z\\s\\.\\)\\(]+)$').test(string)) {
-                return {msg: undefined, error: false};
+                return {msg: 'Enter your full name.', error: false};
             } else {
                 return {msg: 'Special Char and numbers are not permitted.', error: true};
             }
@@ -67,13 +63,19 @@ class UserForm extends React.Component {
         }
     }
 
-    checkCityClg(string) {
+    checkCityClg(string, clg) {
         if (string.trim().length === 0) {
-            return {msg: undefined, error: false};
+            if (clg) {
+                return {msg: 'Enter your college/university.', error: false};
+            }
+            return {msg: 'Enter you home city/town.', error: false};
         }
         if (string.trim().length >= 3) {
             if (RegExp('^([a-zA-Z\\s\\.\\)\\(]+)$').test(string)) {
-                return {msg: undefined, error: false};
+                if (clg) {
+                    return {msg: 'Enter your college/university.', error: false};
+                }
+                return {msg: 'Enter you home city/town.', error: false};
             } else {
                 return {msg: 'Special Char and numbers are not permitted.', error: true};
             }
@@ -83,15 +85,21 @@ class UserForm extends React.Component {
         }
     }
 
-    checkCompulsoryGithubId(string) {
+    checkCompulsoryGithubId(string, user) {
         if (string.length >= 3) {
             if (RegExp('(^[a-zA-Z0-9][a-zA-Z0-9\\-]+[a-zA-Z0-9])$').test(string)) {
-                return {msg: undefined, error: false};
+                if (user) {
+                    return {msg: 'Enter your Github id.', error: false};
+                } else {
+
+                    return {msg: 'Enter your friend\'s github id.', error: false};
+                }
+
             } else {
-                return {msg: 'Github username has alphanumeric char and hyphen.', error: true};
+                return {msg: 'Github id has alphanumeric char and hyphen.', error: true};
             }
         } else {
-            return {msg: 'Github username is longer than 3 characters.', error: true};
+            return {msg: 'Github id is longer than 3 characters.', error: true};
         }
     }
 
@@ -101,13 +109,13 @@ class UserForm extends React.Component {
         }
         if (string.trim().length >= 3) {
             if (RegExp('(^[a-zA-Z0-9][a-zA-Z0-9\\-]+[a-zA-Z0-9])$').test(string)) {
-                return {msg: undefined, error: false};
+                return {msg: 'Enter your friend\'s github id.', error: false};
             } else {
-                return {msg: 'Github username has alphanumeric char and hyphen.', error: true};
+                return {msg: 'Github id has alphanumeric char and hyphen.', error: true};
             }
         }
         if (0 < string.trim().length && string.trim().length < 4) {
-            return {msg: 'Github username is longer than 3 characters.', error: true};
+            return {msg: 'Github id is longer than 3 characters.', error: true};
         }
     }
 
@@ -118,7 +126,7 @@ class UserForm extends React.Component {
     };
     validateGitId = () => {
         const {gitId} = this.state;
-        let {msg, error} = this.checkCompulsoryGithubId(gitId);
+        let {msg, error} = this.checkCompulsoryGithubId(gitId, true);
         this.setState({
             gitIdErrorMsg: msg,
             gitIdError: error
@@ -146,7 +154,7 @@ class UserForm extends React.Component {
     };
     validateCity = () => {
         const {city} = this.state;
-        let {msg, error} = this.checkCityClg(city);
+        let {msg, error} = this.checkCityClg(city, false);
         //console.log('city', msg, error);
         this.setState({
             cityErrorMsg: msg,
@@ -160,7 +168,7 @@ class UserForm extends React.Component {
     };
     validateClg = () => {
         const {clg} = this.state;
-        let {msg, error} = this.checkCityClg(clg);
+        let {msg, error} = this.checkCityClg(clg, true);
         this.setState({
             clgErrorMsg: msg,
             clgError: error
@@ -173,7 +181,7 @@ class UserForm extends React.Component {
     };
     validateGit1 = () => {
         const {git1} = this.state;
-        let {msg, error} = this.checkCompulsoryGithubId(git1);
+        let {msg, error} = this.checkCompulsoryGithubId(git1, false);
         this.setState({
             git1ErrorMsg: msg,
             git1Error: error
@@ -186,7 +194,7 @@ class UserForm extends React.Component {
     };
     validateGit2 = () => {
         const {git2} = this.state;
-        let {msg, error} = this.checkCompulsoryGithubId(git2);
+        let {msg, error} = this.checkCompulsoryGithubId(git2, false);
         this.setState({
             git2ErrorMsg: msg,
             git2Error: error
@@ -229,7 +237,7 @@ class UserForm extends React.Component {
             if (redirect) {
                 this.redirectToRepo();
                 console.log('redirect');
-                // window.location.reload();
+                window.location.reload();
             }
         }, 3000);
 
@@ -238,50 +246,60 @@ class UserForm extends React.Component {
     handleSubmit = event => {
         event.preventDefault();
         const {name, gitId, clg, city, git1, git2, git3, git4} = this.state;
-        if (!this.state.nameError && !this.state.gitIdError && !this.state.git1Error && !this.state.git2Error) {
+        if (!this.state.nameError && !this.state.gitIdError && !this.state.git1Error && !this.state.git2Error
+            && this.state.name.trim() !== '' && this.state.gitId !== '' && this.state.git1 !== '' && this.state.git2 !== '') {
             this.setState({progress: true});
-            // FormValidation(gitId.trim().toLowerCase(), clg.trim(), git1.trim().toLowerCase(),
-            //     git2.trim().toLowerCase(), git3.trim().toLowerCase(), git4.trim().toLowerCase(), city.trim(),
-            //     name.trim())
-            //     .then(res => {
-            //         if (res === false) {
-            //             this.setState({
-            //                 progress: false,
-            //                 openSnackbar: true,
-            //                 severity: 'error',
-            //                 msg: 'Please enter correct details.'
-            //             });
-            //             this.clearSnackbar(false);
-            //         } else {
-            //             this.setState({
-            //                 progress: false,
-            //                 openSnackbar: true,
-            //                 severity: 'success',
-            //                 msg: 'Data Saved Successfully. You will now be redirected to repo.'
-            //             });
-            //             this.setState(this.initialState);
-            //             this.clearSnackbar(true);
+            FormValidation(gitId.trim().toLowerCase(), clg.trim(), git1.trim().toLowerCase(),
+                git2.trim().toLowerCase(), git3.trim().toLowerCase(), git4.trim().toLowerCase(), city.trim(),
+                name.trim())
+                .then(res => {
+                    if (res === false) {
+                        this.setState({
+                            progress: false,
+                            openSnackbar: true,
+                            severity: 'error',
+                            msg: 'Please enter correct details.'
+                        });
+                        this.clearSnackbar(false);
+                    } else {
+                        this.setState({
+                            progress: false,
+                            openSnackbar: true,
+                            severity: 'success',
+                            msg: 'Data Saved Successfully. You will now be redirected to repo.'
+                        });
+                        this.setState(this.initialState);
+                        this.clearSnackbar(true);
 
-            //         }
+                    }
 
-            //         //console.log(res);
-            //     }).catch(err => {
-            //     this.setState({
-            //         progress: false,
-            //         openSnackbar: true,
-            //         severity: 'error',
-            //         msg: 'Please enter correct details.'
-            //     });
-            //     this.clearAll();
-            //     this.clearSnackbar(false);
-            //     //console.log('error');
-            //     //console.log(err);
-            // });
+                    //console.log(res);
+                }).catch(err => {
+                this.setState({
+                    progress: false,
+                    openSnackbar: true,
+                    severity: 'error',
+                    msg: 'Please enter correct details.'
+                });
+                this.clearAll();
+                this.clearSnackbar(false);
+                //console.log('error');
+                //console.log(err);
+            });
+        } else {
+            this.setState({
+                progress: false,
+                openSnackbar: true,
+                severity: 'error',
+                msg: 'Please correctly fill required fields.'
+            });
+            this.clearSnackbar(false);
         }
     };
 
     redirectToRepo = () => {
-        window.open('https://github.com/jklu-jaipur/network-jklu/issues', '_blank');
+        let newTab = window.open();
+        newTab.location.href = 'https://github.com/jklu-jaipur/network-jklu/issues';
     };
     clearAll = event => {
         event.preventDefault();
@@ -310,7 +328,8 @@ class UserForm extends React.Component {
                                     <p>Details</p>
                                 </form>
                                 <form className={'tf-comp'}>
-                                    <TextField className="textarea-1" required id="outlined-gitId" autoFocus={true} label="GitHub Username"
+                                    <TextField className="textarea-1" required id="outlined-gitId" autoFocus={true}
+                                               label="GitHub Username"
                                                value={this.state.gitId}
                                                error={this.state.gitIdError} onChange={this.handleGitIdChange}
                                                name="git"
@@ -319,20 +338,22 @@ class UserForm extends React.Component {
                                                variant="outlined"/>
                                 </form>
                                 <form className={'tf-comp'}>
-                                    <TextField className="textarea-1" required id="outlined-name" label="Name" value={this.state.name}
+                                    <TextField className="textarea-1" required id="outlined-name" label="Name"
+                                               value={this.state.name}
                                                onChange={this.handleNameChange}
                                                error={this.state.nameError} name="name" type="text" variant="outlined"
                                                helperText={this.state.nameErrorMsg}/>
                                 </form>
                                 <form className={'tf-comp'}>
-                                    <TextField className="textarea-1" id="outlined-city" label="City" value={this.state.city}
+                                    <TextField className="textarea-1" id="outlined-city" label="City"
+                                               value={this.state.city}
                                                onChange={this.handleCityChange}
                                                name="city"
                                                error={this.state.cityError} helperText={this.state.cityErrorMsg}
                                                type="text"
                                                variant="outlined"/>
                                 </form>
-                                <form  className={'tf-comp'}>
+                                <form className={'tf-comp'}>
                                     <TextField
                                         id="outlined-clg"
                                         className="textarea-1"
@@ -348,45 +369,49 @@ class UserForm extends React.Component {
                                 </form>
                             </div>
                             <div className="designform">
-                            
+
                                 <form className="textarea-1" className="subtext tf-comp">
                                     <p>Add Friends</p>
                                 </form>
-                                <form  className={'tf-comp'}>
-                                    <TextField className="textarea-1" required id="outlined-git1" label="GitHub Username" value={this.state.git1}
-                                            error={this.state.git1Error} onChange={this.handleGit1Error} name="git1"
-                                            type="text"
-                                            helperText={this.state.git1ErrorMsg}
+                                <form className={'tf-comp'}>
+                                    <TextField className="textarea-1" required id="outlined-git1"
+                                               label="GitHub Username" value={this.state.git1}
+                                               error={this.state.git1Error} onChange={this.handleGit1Error} name="git1"
+                                               type="text"
+                                               helperText={this.state.git1ErrorMsg}
 
-                                            variant="outlined"/>
+                                               variant="outlined"/>
                                 </form>
                                 <form className="textarea-1" className={'tf-comp'}>
-                                    <TextField className="textarea-1" required id="outlined-git2" label="GitHub Username" value={this.state.git2}
-                                            error={this.state.git2Error} onChange={this.handleGit2Error} name="git2"
-                                            type="text"
-                                            helperText={this.state.git2ErrorMsg}
-                                            variant="outlined"/>
+                                    <TextField className="textarea-1" required id="outlined-git2"
+                                               label="GitHub Username" value={this.state.git2}
+                                               error={this.state.git2Error} onChange={this.handleGit2Error} name="git2"
+                                               type="text"
+                                               helperText={this.state.git2ErrorMsg}
+                                               variant="outlined"/>
                                 </form>
                                 <form className="textarea-1" className={'tf-comp'}>
-                                    <TextField className="textarea-1" id="outlined-git3" label="GitHub Username" value={this.state.git3}
-                                            onChange={this.handleGit3Error}
-                                            helperText={this.state.git3ErrorMsg}
-                                            error={this.state.git3Error}
-                                            name="git3" type="text" variant="outlined"/>
+                                    <TextField className="textarea-1" id="outlined-git3" label="GitHub Username"
+                                               value={this.state.git3}
+                                               onChange={this.handleGit3Error}
+                                               helperText={this.state.git3ErrorMsg}
+                                               error={this.state.git3Error}
+                                               name="git3" type="text" variant="outlined"/>
                                 </form>
                                 <form className="textarea-1" className={'tf-comp'}>
-                                    <TextField className="textarea-1" id="outlined-git4" label="GitHub Username" value={this.state.git4}
-                                            onChange={this.handleGit4Error} error={this.state.git4Error}
-                                            helperText={this.state.git4ErrorMsg}
-                                            name="git4" type="text" variant="outlined"/>
+                                    <TextField className="textarea-1" id="outlined-git4" label="GitHub Username"
+                                               value={this.state.git4}
+                                               onChange={this.handleGit4Error} error={this.state.git4Error}
+                                               helperText={this.state.git4ErrorMsg}
+                                               name="git4" type="text" variant="outlined"/>
                                 </form>
                                 <div className="Button-align designform">
                                     <div className="button-adjust">
                                         <Button className="button1" color="primary" variant="contained"
-                                                        onClick={this.handleSubmit}>SUBMIT</Button>
+                                                onClick={this.handleSubmit}>SUBMIT</Button>
 
                                         <Button className="button2" variant="contained" color="secondary"
-                                                        onClick={this.clearAll}>CLEAR</Button>
+                                                onClick={this.clearAll}>CLEAR</Button>
                                     </div>
                                 </div>
                             </div>
