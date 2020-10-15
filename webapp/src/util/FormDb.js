@@ -4,7 +4,7 @@ function getFriends(friends) {
     let final = [];
     friends.forEach((f) => {
         final.push(f.gitId);
-    })
+    });
     return final;
 }
 

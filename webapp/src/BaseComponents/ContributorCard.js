@@ -29,7 +29,7 @@ const useStyles = makeStyles({
 
 function ContributorCard(props) {
     const classes = useStyles();
-    const bull = <span className={classes.bullet}>•</span>;
+    // const bull = <span className={classes.bullet}>•</span>;
     return (
 
         <div className="headname">

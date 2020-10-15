@@ -22,7 +22,7 @@ class viz extends Component {
         ReadUsers()
             .then(data => ProcessGraph(data))
             .then(displayData => {
-                console.log(displayData);
+                //console.log(displayData);
                 this.setState({isReady: true});
                 let friendNetwork = am4core.create("chartDiv", am4plugins_forceDirected.ForceDirectedTree);
 
@@ -66,7 +66,7 @@ class viz extends Component {
     }
 
     componentWillUnmount() {
-        console.log('unmount');
+        //console.log('unmount');
         if (this.chart) {
             this.chart.dispose();
         }

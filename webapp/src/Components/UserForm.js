@@ -1,16 +1,14 @@
 import React from 'react';
-import {makeStyles} from '@material-ui/core/styles';
+
 import TextField from '@material-ui/core/TextField';
-import {FormControl, Button} from '@material-ui/core';
-import Snackbar from '@material-ui/core/Snackbar';
-import MenuItem from '@material-ui/core/MenuItem';
-import ButtonGroup from '@material-ui/core/ButtonGroup';
+import {Button} from '@material-ui/core';
+
 import './UserForm.css';
 import Paper from "@material-ui/core/Paper";
-import {blue} from '@material-ui/core/colors';
+
 import FormValidation from '../util/FormValidation';
 import SubmitButtonProgress from "../BaseComponents/SubmitButtonProgress";
-import DataSavedSnackbar from "../BaseComponents/DataSavedSnackbar";
+
 import SubmitButtonSnackbar from "../BaseComponents/SubmitButtonSnackbar";
 
 
@@ -54,7 +52,7 @@ class UserForm extends React.Component {
     constructor(props) {
         super(props);
         this.state = {...this.initialState, ...this.initialSnackbar};
-        console.log({...this.initialState, ...this.initialSnackbar});
+        //console.log({...this.initialState, ...this.initialSnackbar});
     }
 
     checkName(string) {
@@ -134,7 +132,7 @@ class UserForm extends React.Component {
     validateName = () => {
         const {name} = this.state;
         let {msg, error} = this.checkName(name);
-        console.log('name', msg, error);
+        //console.log('name', msg, error);
         this.setState({
             nameErrorMsg: msg,
             nameError: error
@@ -149,7 +147,7 @@ class UserForm extends React.Component {
     validateCity = () => {
         const {city} = this.state;
         let {msg, error} = this.checkCityClg(city);
-        console.log('city', msg, error);
+        //console.log('city', msg, error);
         this.setState({
             cityErrorMsg: msg,
             cityError: error
@@ -230,7 +228,8 @@ class UserForm extends React.Component {
             });
             if (redirect) {
                 this.redirectToRepo();
-                window.location.reload();
+                console.log('redirect');
+                // window.location.reload();
             }
         }, 3000);
 
@@ -265,7 +264,7 @@ class UserForm extends React.Component {
 
                     }
 
-                    console.log(res);
+                    //console.log(res);
                 }).catch(err => {
                 this.setState({
                     progress: false,
@@ -275,8 +274,8 @@ class UserForm extends React.Component {
                 });
                 this.clearAll();
                 this.clearSnackbar(false);
-                console.log('error');
-                console.log(err);
+                //console.log('error');
+                //console.log(err);
             });
         }
     };
@@ -287,7 +286,7 @@ class UserForm extends React.Component {
     clearAll = event => {
         event.preventDefault();
         this.setState(this.initialState);
-        this.clearSnackbar();
+        this.clearSnackbar(false);
     };
 
     render() {

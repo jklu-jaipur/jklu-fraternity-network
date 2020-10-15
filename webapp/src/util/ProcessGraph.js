@@ -1,8 +1,7 @@
 export default function ProcessDbRead(data) {
-    // console.log(data);
     let user;
     let processedData = [];
-    console.log(data);
+    //console.log(data);
     for (user of data) {
         if (user['verified'] === true) {
             processedData.push({
