@@ -7,11 +7,11 @@ import './UserForm.css';
 import Paper from "@material-ui/core/Paper";
 import SubmitButtonProgress from "../BaseComponents/SubmitButtonProgress";
 import SubmitButtonSnackbar from "../BaseComponents/SubmitButtonSnackbar";
-import {type} from "@amcharts/amcharts4/core";
 
 
 class UserForm extends React.Component {
     initialState = {
+        redirectUrl:'https://github.com/jklu-jaipur/jklu-fraternity-network/issues',
         gitId: '',
         name: '',
         city: '',
@@ -299,7 +299,7 @@ class UserForm extends React.Component {
 
     redirectToRepo = () => {
         let newTab = window.open();
-        newTab.location.href = 'https://github.com/jklu-jaipur/network-jklu/issues';
+        newTab.location.href = this.state.redirectUrl;
     };
     clearAll = event => {
         event.preventDefault();
