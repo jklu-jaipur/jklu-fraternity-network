@@ -38,3 +38,11 @@ body{
     text-align: left;
 }
 
+.text-apart{
+    color: white;
+    text-decoration: underline;
+}
+.text-apart:hover{
+    color: white;
+    cursor: pointer;
+}

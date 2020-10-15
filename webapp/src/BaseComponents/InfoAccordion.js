@@ -6,7 +6,8 @@ import AccordionDetails from '@material-ui/core/AccordionDetails';
 import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import './InfoAccordion.css';
-import Pic from '../media/hacktoberfest1.png';
+import Pic from '../media/hack.png';
+import Git from '../media/git.png';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -26,6 +27,7 @@ const useStyles = makeStyles((theme) => ({
 export default function InfoAccordion(props) {
     const classes = useStyles();
     const [expanded, setExpanded] = React.useState(false);
+    const image =[Pic,Git];
 
     const handleChange = (panel) => (event, isExpanded) => {
         console.log(panel);
@@ -46,7 +48,7 @@ export default function InfoAccordion(props) {
             
           
             <AccordionDetails className={props.isimage ? "disp-poster" : "disp-text"} >
-                { props.isimage ? <img width="80%" height="50%" src={Pic}></img> : null}
+                { props.isimage ? <img width="auto" height="auto" src={Pic}></img> : null}
                 <div className={props.isimage ? "disp-poster-text" : "disp-poster-text-1"}>
                     <Typography className={"text-style"} className={classes.text}>
                         {props.content}

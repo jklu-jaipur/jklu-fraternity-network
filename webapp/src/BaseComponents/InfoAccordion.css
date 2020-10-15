@@ -8,8 +8,8 @@
 }
 .disp-poster{
     display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
+    justify-content: left;
+    
 }
 .disp-poster-text{
     margin-top: 20px;
@@ -20,3 +20,12 @@
 .disp-text{
     
 }
+@media only screen and (max-width: 1060px) {
+    .disp-poster{
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+       
+    }
+  }
+  
