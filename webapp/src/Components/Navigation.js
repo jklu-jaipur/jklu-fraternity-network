@@ -6,7 +6,7 @@ import React from 'react';
 import './Navigation.css';
 import Form from './UserForm.js';
 import Viz from './Viz.js';
-import Info from './info.js';
+import Info from './InfoPage.js';
 import Contributors from "./Contributors";
 import AddIcon from '@material-ui/icons/Add';
 import BlurOnIcon from '@material-ui/icons/BlurOn';
@@ -47,7 +47,7 @@ class Navigation extends React.Component {
             <div>
 
                 <Menu isOpen={this.state.menuOpen} onStateChange={(state) => this.handleStateChange(state)}>
-                    <span className="jk-tag">JKLU</span>
+                    <span className="jk-tag">JKLU Fraternity Network</span>
                     {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
                     <a id='info' href={'#'} onClick={() => this.setState({
                         showInfo: true,

@@ -84,8 +84,8 @@ a:hover{
     cursor: pointer;
 }
 .jk-tag{
-    padding-left: 32px;
-    font-size: 300%;
+    padding-left: 2px;
+    font-size: 150%;
     color: white;
     outline: none;
 }
