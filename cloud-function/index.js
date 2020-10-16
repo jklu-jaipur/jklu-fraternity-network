@@ -3,24 +3,25 @@ const db = require('./firebase');
 const settings = require('./settings');
 
 exports.handleNewMergedPullRequest = (req, res) => {
-    if (req.body.action === 'closed' && req.body.pull_request.merged === true) {
-        return validatePullRequest(req)
-            .then(() => {
+    return validatePullRequest(req)
+        .then(() => {
+            console.log('in');
+            if (req.body.action === 'closed' && req.body.pull_request.merged === true) {
                 console.log('user validated, about to save');
-                saveToDatabase(req.body.pull_request.user.login);
-            }).then(() => {
-                res.status(200).end();
-            })
-            .catch((err) => {
-                console.error(err.stack);
-                res.status(err.statusCode ? err.statusCode : 500)
-                    .send(err.message)
-                    .end();
-            });
-    } else {
-        res.end();
-        return;
-    }
+                return saveToDatabase(req.body.pull_request.user.login);
+            } else {
+                console.log('not saved');
+            }
+        }).then(() => {
+            console.log('exit');
+            res.status(200).end();
+        })
+        .catch((err) => {
+            console.error(err.stack);
+            res.status(err.statusCode ? err.statusCode : 500)
+                .send(err.message)
+                .end();
+        });
 };
 
 function saveToDatabase(githubId) {
