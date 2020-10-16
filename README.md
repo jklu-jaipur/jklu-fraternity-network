@@ -1,5 +1,7 @@
 # JKLU Fraternity Network
 
+**Contributions are to be made in contributions folder only.**
+---
 The year 2020 went really fast, just a blink of eye and here we are, in the month of October. 
 The auspicious month for OpenSource enthusiasts around the world and the time for one of the biggest open source celebrations: [HacktoberFest 2020](https://hacktoberfest.digitalocean.com/).
 
