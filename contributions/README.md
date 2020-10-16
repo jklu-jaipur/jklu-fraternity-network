@@ -26,7 +26,7 @@
  
 ## Step 4
  Scroll down and then select the option ‘create a new branch ‘, you can name the branch based on your liking, alternatively you can also commit to the main branch and click on Propose new file/Create commit.
- ![Edit new file](https://github.com/jklu-jaipur/jklu-fraternity-network/blob/main/assets/4.png)
+ ![Edit new file](https://github.com/jklu-jaipur/jklu-fraternity-network/blob/main/assets/new4.png)
    
   
   ## Step 5
