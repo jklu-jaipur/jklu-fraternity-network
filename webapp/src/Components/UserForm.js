@@ -11,7 +11,7 @@ import SubmitButtonSnackbar from "../BaseComponents/SubmitButtonSnackbar";
 
 class UserForm extends React.Component {
     initialState = {
-        redirectUrl: 'https://github.com/jklu-jaipur/jklu-fraternity-network/issues',
+        redirectUrl: 'https://github.com/jklu-jaipur/jklu-fraternity-network/',
         gitId: '',
         name: '',
         city: '',
@@ -48,7 +48,6 @@ class UserForm extends React.Component {
     constructor(props) {
         super(props);
         this.state = {...this.initialState, ...this.initialSnackbar};
-        //console.log({...this.initialState, ...this.initialSnackbar});
     }
 
     checkName(string) {

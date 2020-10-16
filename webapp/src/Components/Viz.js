@@ -54,7 +54,7 @@ class viz extends Component {
 
                 friendNetworkSeries.links.template.strokeWidth = 5;
                 friendNetworkSeries.links.template.strokeOpacity = 1;
-
+                friendNetworkSeries.links.template.distance = 3;
 
                 friendNetworkSeries.nodes.template.tooltipText = "{name}{nameWithAvatar} ({githubId})\n Public Repo: [bold]{publicRepo}[/]";
 
