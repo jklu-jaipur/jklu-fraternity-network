@@ -1,0 +1,82 @@
+#include <iostream>
+#include <memory>
+#include <cassert>
+
+using namespace std;
+
+typedef struct 
+{
+	int *elems;
+	int logLength;
+	int allocLength;
+} Stack;
+
+void createStack(Stack *s) 
+{
+	s->logLength = 0;
+	s->allocLength = 4;
+	s->elems = (int *)malloc(4 * sizeof(int));
+	assert(s->elems != NULL);
+}
+
+void deleteStack(Stack *s) 
+{
+	free(s->elems);
+	s->logLength = 0;
+	/* free(s) - Don't do this. 
+	  The structure is not dynamically allocated */
+}
+
+void pushStack(Stack *s, int value) 
+{
+	if(s->logLength == s->allocLength) {
+		/* doubling stratege */
+		s->allocLength *= 2;
+		s->elems = (int *)realloc(s->elems,s->allocLength * sizeof(int));
+		assert(s->elems != NULL);
+	}
+
+	s->elems[s->logLength] = value;
+	s->logLength++;
+}
+
+int popStack(Stack *s) 
+{
+	assert(s->logLength > 0);
+	s->logLength--;
+	return s->elems[s->logLength];
+}
+
+void printStack(Stack *s) 
+{
+	for(int i = 0; i < s->logLength; i++) {
+		cout << s->elems[i] << " ";
+	}
+	cout << endl;
+	return;
+}
+
+int main()
+{
+	Stack s;
+	createStack(&s;);
+	for(int i = 0; i < 10; i++) {
+		pushStack(&s;,i);
+	}
+	printStack(&s;);
+	cout << "Pop: " << popStack(&s;) << endl;
+	printStack(&s;);
+	cout << "Pop: " << popStack(&s;) << endl;
+	printStack(&s;);
+
+	cout << "Stack disposed" << endl;
+	deleteStack(&s;);
+	printStack(&s;);
+}
+//output 
+0 1 2 3 4 5 6 7 8 9
+Pop: 9
+0 1 2 3 4 5 6 7 8
+Pop: 8
+0 1 2 3 4 5 6 7
+Stack disposed
