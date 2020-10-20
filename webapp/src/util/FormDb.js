@@ -28,18 +28,20 @@ function AddUser(githubId, college, friends, location, name) {
     let batch = db.batch();
     db.collection('users').doc(githubId.gitId.toLowerCase()).get().then(docSnapshot => {
         let friendList = [];
+        let verify='';
         if (docSnapshot.exists) {
             friendList = docSnapshot.data()['friends'];
+            verify=docSnapshot.data()['verified'];
         }
-        return friendList
-    }).then((friendList) => {
+        return {friendList,verify}
+    }).then(({friendList,verify}) => {
         return batch.set(db.collection('users').doc(githubId.gitId.toLowerCase()), {
             clg: college,
             friends: [...new Set(friendList.concat(getFriends(friends)))],
             loc: location,
             name: name,
             githubId: githubId.gitId,
-            verified: false,
+            verified: verify,
             avatar: githubId.avatar,
             repos: githubId.pubRepo
         });
