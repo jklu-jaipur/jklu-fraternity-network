@@ -1,0 +1,312 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+package javaapplication107;
+
+/**
+ *
+ * @author user
+ * 
+ */
+
+import java.util.Scanner;
+class Nod{
+     protected int data;
+     public Nod Link;
+    public Nod(){
+         data = 0;
+         Link = null;
+     }
+     public Nod(int n,Nod m){
+         data = n;
+         Link = m;
+     }
+    void setData(int d)
+     {
+         data =d;
+     }
+     int getData(){
+         return data;
+     }
+     void setLink(Nod m){
+         Link = m;
+     }
+     public Nod GetLink(){
+        return Link;
+}
+ }
+class LinkedList{
+    public Nod START,PTR,PPTR,PPPTR;
+    
+    int val;
+    LinkedList(){
+        START = null;
+    }
+    
+    void FirstPos(int N){
+        Nod nptr = new Nod(N,null);
+        if(START==null){
+            START = nptr;
+        }
+        else{
+            nptr.setLink(START);
+            START = nptr;
+        }
+    }
+    public void lastpos(int val){
+        Nod nptr = new Nod(val,null);
+        if(START==null){
+            System.out.println("Underflow");
+        }
+        else{
+            PTR = START;
+            while(PTR.GetLink()!=null){
+                PTR = PTR.GetLink();
+                
+            }
+            
+            PTR.setLink(nptr);
+           
+        }
+        
+    }
+    public void Afvalue(int val,int s){
+        if(START==null){
+            System.out.println("Underflow");
+        }
+        else{ Nod nptr = new Nod(val,null);
+            PTR = START;
+            while(PTR.getData()!=val){
+                
+                PTR=PTR.GetLink();
+                
+            }
+           PPTR = PTR;
+           PPTR = PPTR.GetLink();
+            
+           
+           PTR.setLink(nptr);
+           nptr.setData(s);
+           nptr.setLink(PPTR);
+        }
+        
+    }
+    public void befvalue(int val,int s){
+        if(START==null){
+            System.out.println("Underflow");
+        }
+        else{Nod nptr = new Nod(val,null);
+        PTR = START;
+        PPPTR = START;
+        while(PTR.getData()!=val){
+            PPTR = PTR;
+            PTR = PTR.GetLink();
+        }
+        PPTR.setLink(nptr);
+        nptr.setData(s);
+        nptr.setLink(PTR);
+        }
+    }
+    public void disp(){
+        if(START==null){
+            System.out.println("Underflow");
+        }
+        else{ 
+            System.out.println("Linked list elements are-");
+            
+            PTR=START;
+                
+            while(PTR!=null){
+                System.out.print(PTR.data +"->");
+            PTR= PTR.GetLink();
+                
+            }System.out.print("\b\b");
+            System.out.println("");
+        }
+    }
+    
+    public void delefirst(){
+       if(START==null){
+            System.out.println("Underflow");
+        }
+       else{
+           
+           
+           PTR = START;
+           PPTR = PTR;
+           PPTR=PPTR.GetLink();
+           START.setLink(PPTR);
+           START = PPTR;
+           
+       }
+    }
+    public void reversal(){
+        if(START==null){
+            System.out.println("Underflow");
+        }
+        else{ 
+     PTR=START;
+            PPTR=null;
+        PPPTR=null;
+        while(PTR!=null) {
+        PPPTR=PTR.GetLink();
+    PTR.setLink(PPTR);
+    PPTR=PTR;
+    PTR=PPTR;}
+    START=PPTR;
+ 
+}
+    }
+
+    public void delelast(){
+        if(START==null){
+            System.out.println("Underflow");
+        }
+        else{
+            PTR = START;
+            while(PTR.GetLink()!=null){
+                PPTR = PTR;
+                PTR = PTR.GetLink();
+            }
+            PPTR.setLink(PTR.GetLink());
+            
+        }
+    }
+    public void deleafval(int val){
+        if(START==null){
+            System.out.println("Underflow");
+        }
+        else{
+            PTR = START;
+            while(PTR.getData()!=val){
+                
+                PTR=PTR.GetLink();
+            }
+            PPTR = PTR;
+            PPTR = PPTR.GetLink();
+            PTR.setLink(PPTR.GetLink());
+        }
+    }
+    public void delebefval(int val){
+        
+        if(START==null){
+            System.out.println("Underflow");
+        }
+        
+        else{
+            
+            PTR = START;
+            
+            while(PTR.GetLink().getData()!=val){
+                PPTR = PTR;
+                PTR = PTR.GetLink();
+              
+            }
+           
+           PPTR.setLink(PTR.GetLink());
+           
+           
+            
+            
+           
+        }
+    }
+    public void underflow(){
+        if(START == null){
+            System.out.println("Undeflow");
+        }
+    }
+}
+public class Link {
+    public static void main(String []args){
+        Scanner sc = new Scanner(System.in);
+        char ch;
+        Nod obj = new Nod();
+        LinkedList objj = new LinkedList();
+      do{
+          System.out.println("Enter the number to perfrom the operations");
+          System.out.println("1.Insertion at first position");
+          System.out.println("2.Insertion at last position");
+          System.out.println("3.Deletion after a given value");
+          System.out.println("4.Deletion before a given value");
+          System.out.println("5.Deletion at first position");
+          System.out.println("6.Deletion at last position");
+          System.out.println("7.Insertion after a given value");
+          System.out.println("8.Insertion before a given value");
+          System.out.println("9.Diplay");
+          System.out.println("10.Underflow");
+          int j = sc.nextInt();
+          switch(j){
+              case 1:
+                  System.out.println("Enter the value to insert");
+                  int u = sc.nextInt();
+                  objj.FirstPos(u);
+                  objj.disp();
+                  break;
+              case 2:
+                  System.out.println("Enter the value to insert");
+                  int q = sc.nextInt();
+                  objj.lastpos(q);
+                  objj.disp();
+                  break;
+              case 3:
+                  System.out.println("The value after which you want to delete");
+                  int s = sc.nextInt();
+                  objj.deleafval(s);
+                  objj.disp();
+                  break;
+              case 4:
+                  int x = sc.nextInt();
+                  objj.delebefval(x);
+                  objj.disp();
+                  break;
+              case 5:
+                  objj.delefirst();
+                  objj.disp();
+                  break;
+              case 6:
+                  objj.delelast();
+                  objj.disp();
+                  break;
+              case 7:
+                  System.out.println("after??");
+                  int o = sc.nextInt();
+                  System.out.println("Enter the value to insert");
+                  int l = sc.nextInt();
+                  objj.Afvalue(o,l);
+                  objj.disp();
+                  break;
+              case 8:
+                  System.out.println("Before?");
+                  int val = sc.nextInt();
+                  System.out.println("Enter the value to insert");
+                  int val2 = sc.nextInt();
+                  objj.befvalue(val,val2 );
+                  objj.disp();
+                  break;
+              case 9:
+                  objj.disp();
+                  break;
+              case 10: 
+                  objj.underflow();
+                  break;
+              case 11:
+                  objj.reversal();
+                  objj.disp();
+                  break;
+              default : System.out.println("Invalid");break;}
+                  System.out.println("Do you wish to continue (Y or N)");
+                  ch = sc.next().charAt(0);
+      }         
+              while(ch=='y'||ch=='Y');
+          
+       
+    }
+   
+}
+
+
+
