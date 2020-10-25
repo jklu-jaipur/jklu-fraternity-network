@@ -1,0 +1,53 @@
+package javaapplication201;
+import java.util.Scanner;
+
+class binary_search{
+    int []A;
+    int m;
+    int find;
+    public binary_search(int []A,int n, int key){
+        this.A=A;
+        this.m=n;
+        find=key;
+    }
+    public void sort(){
+        int i=0;
+        int j=m-1;
+        while(i<=j){
+            int mid=(i+j)/2;
+            if(find==A[mid]){
+                System.out.println("key found at index:"+(mid+1));
+                break;
+            }
+            if(find<A[mid]){
+                j=mid-1;
+            }
+            if(find>A[mid]){
+                i=mid+1;
+            }
+            if(find>A[j]){
+                System.out.println("Not in array or not found");
+                break;
+            }
+        }
+    }
+    
+}
+
+
+
+
+public class binary_search {
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        int n=sc.nextInt();
+        int A[]=new int[n];
+        for(int i=0;i<n;i++){
+            A[i]=sc.nextInt();
+        }
+        int m=sc.nextInt();
+        binary_search bs=new binary_search(A,n,m);
+        bs.sort();
+    }
+    
+}
