@@ -1,0 +1,40 @@
+
+// Global styles
+img {
+  vertical-align: middle;
+}
+
+button:focus {
+  outline: none;
+}
+
+.fs13 {
+  font-size: 1.3rem;
+}
+
+.pin {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 2.4rem;
+  min-width: 2.4rem;
+  height: 2.4rem;
+  min-height: 2.4rem;
+  margin-right: 1rem;
+
+  font-size: 1.2rem;
+  border-radius: 100px;
+  text-align: center;
+  font-weight: bold;
+
+  &-blue {
+    background: var(--color-blue);
+    color: var(--color-white);
+  }
+
+  &-yellow {
+    background: var(--color-yellow);
+    color: var(--color-black);
+  }
+}
