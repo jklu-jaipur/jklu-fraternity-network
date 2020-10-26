@@ -23,20 +23,22 @@ sum = num1 + num2
 print("Sum of {0} and {1} is {2}" .format(num1, num2, sum)) 
 
 
-# Python program to check if year is a leap year or not
+# Python program to find the factorial of a number provided by the user.
 
-year = 2000
+# change the value for a different result
+num = 7
 
-# To get year (integer input) from the user
-# year = int(input("Enter a year: "))
+# To take input from the user
+#num = int(input("Enter a number: "))
 
-if (year % 4) == 0:
-   if (year % 100) == 0:
-       if (year % 400) == 0:
-           print("{0} is a leap year".format(year))
-       else:
-           print("{0} is not a leap year".format(year))
-   else:
-       print("{0} is a leap year".format(year))
+factorial = 1
+
+# check if the number is negative, positive or zero
+if num < 0:
+   print("Sorry, factorial does not exist for negative numbers")
+elif num == 0:
+   print("The factorial of 0 is 1")
 else:
-   print("{0} is not a leap year".format(year))
+   for i in range(1,num + 1):
+       factorial = factorial*i
+   print("The factorial of",num,"is",factorial)
