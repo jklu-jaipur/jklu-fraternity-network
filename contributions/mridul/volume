@@ -1,0 +1,5 @@
+pi=3.14
+hight = float(input('hight of cylinder='))
+radian = float(input('radius of cylinder='))
+volume =  pi*(radian**2)*hight
+print("volume of cyinder is" ,volume)
