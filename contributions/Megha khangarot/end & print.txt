@@ -1,0 +1,81 @@
+Print - itself carries the meaning of new line character and 
+"end" in Python is behaving like a variable to display any value - Hi/space,
+otherwise end behaves like new line, we need to stick it to same line until all stars are printed
+
+Python's print() function comes with a parameter called 'end'. By default, 
+the value of this parameter is '\n', i.e. the new line character.
+
+The end key of print function will set the string that needs 
+to be appended when printing is done.
+
+By default the end key is set by newline character. 
+So after finishing printing all the variables, 
+a newline character is appended. 
+Hence, we get the output of each print statement in different line. 
+But we will now overwrite the newline character by a hyphen(-) 
+at the end of the print statement. See the following example.
+
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+# initialize a list
+initList = ['camel', 'case', 'stop']
+
+# print each words using loop
+print('Printing using default print function')
+for item in initList:
+    print(item)  # default print function. newline is appended after each item.
+
+print()  # another newline
+
+# print each words using modified print function
+print('Printing using modified print function')
+for item in initList:
+    print(item, end='-')
+
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Output
+
+Printing using default print function
+camel
+case
+stop
+
+Printing using modified print function
+camel-case-stop-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Another example
+
+for i in range(0, 5):
+    for j in range(0, i+1):
+        print("*",end="")
+    print()
+
+*
+**
+***
+****
+*****
+
+
+for i in range(0, 5):
+    for j in range(0, i+1):
+        print("* ",end="")
+    print()
+
+* 
+* * 
+* * * 
+* * * * 
+* * * * * 
+
+for i in range(0, 5):
+    for j in range(0, i+1):
+        print("* ",end="Hi")
+    print()
+
+* Hi
+* Hi* Hi
+* Hi* Hi* Hi
+* Hi* Hi* Hi* Hi
+* Hi* Hi* Hi* Hi* Hi
