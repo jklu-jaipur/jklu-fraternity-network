@@ -1,0 +1,46 @@
+For creating an Artificial Neural Network (ANN), I have used the Pima-Indian-Diabetes data set which was freeley available on Kaggle. 
+The result obtained will show a prediction of whether a person has diabetes or not. 
+If the predicted values comes out to be '1', it means the person has diabetes and if it comes out to be '0', he/she does not has diabetes. 
+Firsty I imported fifferent libraries like pandas, sklearn's model selection & the dataset and then the dataset was converted into an array. 
+Then data was split into independent set 'X' and dependent set 'y'. Then, the dataset values were processed so that they contain values between 0 and 1. 
+Then data was again splitted into training and testing data. 
+Then processing for ANN was done. Here data was divided into three layers using "Sequential model" and "reLu, sigmoid" activations. After the above data is compiled, 'binary_crossentropy' loss function was done to measure how well training was done and then Stochastic Gradient Descent ‘sgd’ optimizer was used to improve upon the loss. Accuracy on each step was also calculated using 'accuracy' metrics. The model was trained by using the fit method on the training data, and in batch sizes of 57, with 1000 epochs. To see how well the model is performing, validation data was given to the model by splitting the training data into 20% validation. Then model performance was visualized using graphs. Lastly, predictrion was done using X_test data set. A threshold was created where values .5 and above classify the target data as (1) and values less then that as (0). Then, the model was evaluated on training and testing data set and corresponding accuracy was calculated. 
+
+
+
+
+data1 = json.load(inputFile1) 
+inputFile1.close() 
+data2 = json.load(inputFile2) 
+inputFile2.close() 
+data3 = json.load(inputFile3) 
+inputFile3.close() 
+data4 = json.load(inputFile4) 
+inputFile4.close() 
+data5 = json.load(inputFile5) 
+inputFile5.close() 
+output1 = csv.writer(outputFile1)
+output2 = csv.writer(outputFile2)
+output3 = csv.writer(outputFile3)
+output4 = csv.writer(outputFile4)
+output5 = csv.writer(outputFile5)
+
+
+
+
+inputFile4 = pd.read_json("/content/yelp_academic_dataset_tip.json", lines=True)
+inputFile5 = pd.read_json("/content/yelp_academic_dataset_user.json", lines=True)
+
+
+
+outputFile4 = inputFile4.to_csv("/content/tip.csv")
+outputFile5 = inputFile5.to_csv("/content/user.csv")
+
+
+inputFile3 = pd.read_json("/content/yelp_academic_dataset_review.json", lines=True)
+outputFile3 = inputFile3.to_csv("/content/review.csv")
+
+
+
+LOAD CSV FROM "file:////content/checkin.csv"
+LOAD CSV FROM "file:////content/tip.csv"
