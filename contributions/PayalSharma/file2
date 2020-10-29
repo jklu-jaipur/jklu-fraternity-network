@@ -1,0 +1,14 @@
+from bs4 import BeautifulSoup
+import requests
+import re
+import pandas as pd
+import numpy as np
+from PyInquirer import prompt
+import os
+import signal
+import sys
+import requests
+page_link ='https://www.zigwheels.com/reviews-advice/reviews/tata-harrier-first-drive-review/32481/%23leadform#leadform'
+page_response = requests.get(page_link, timeout=5)
+soup = BeautifulSoup(page_response.text, 'html.parser')
+print(soup.prettify())
