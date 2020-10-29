@@ -1,0 +1,12 @@
+import cv2
+import time
+import numpy as np
+
+cap = cv2.VideoCapture("video.mp4")
+time.sleep(3)
+background=0
+
+for i in range(30):
+    ret,background= cap.read()
+    
+backgroud=np.flip(background,axis=1)  
